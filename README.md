@@ -6,6 +6,10 @@ WHERE2Eat is an iOS app that will be used to help individuals, pairs, or groups 
 
 
 # Project Goals 
+- Allow groups to find an ideal meal location for everyone
+- Cater to dietary preferences so that everyone is able to enjoy the chosen place
+- Motivate individuals to explore new cuisines and places they don't usually go to
+- Find a restaurant that is at a location that is accessible and ideal for all in the group  
 
 
 
