@@ -11,10 +11,19 @@ on:
 
 jobs:
   build:
-
     runs-on: macos-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Run tests
-      run: swift test -v
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Force Xcode 11
+        run: sudo xcode-select -switch /Applications/Xcode_11.7.app
+      - name: iOS build setup
+        run: >-
+          xcodebuild test -workspace TestApp.xcodeproj/project.xcworkspace
+          -scheme TestApp -destination 'platform=iOS Simulator,name=iPhone
+          11,OS=13.7'
+      - name: testing ... iPhone 11
+        run: >-
+          xcodebuild test -workspace TestApp.xcodeproj/project.xcworkspace
+          -scheme TestApp -destination 'platform=iOS Simulator,name=iPhone
+          11,OS=13.7'
