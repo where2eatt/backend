@@ -8,13 +8,19 @@ on:
 
 jobs:
   run_tests:
-    runs-on: macos-11
+    runs-on: macos-latest
     steps:
+    - uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '14.2.0'
     - uses: actions/checkout@v1
-    - name: Select Xcode
-      run: sudo xcode-select -switch /Applications/Xcode_13.0.app && /usr/bin/xcodebuild -version
     - name: List Destinations
-      run: cd frontend/where2eat && xcodebuild -scheme "where2eat" -showdestinations
+      run: |
+        cd frontend/where2eat
+        xcodebuild -scheme "where2eat" -showdestinations
     - name: Run tests
-      run: cd frontend/where2eat && xcodebuild test -scheme where2eat -project where2eat.xcodeproj -destination 'platform=iOS Simulator,name=Any iOS Simulator Device,OS=latest' | xcpretty && exit ${PIPESTATUS[0]}
+      run: |
+        cd frontend/where2eat
+        xcodebuild test -scheme where2eat -project where2eat.xcodeproj -destination 'platform=iOS Simulator,OS=16.2,name=iPhone 14 Pro'
+        xcpretty && exit ${PIPESTATUS[0]}
 
