@@ -15,8 +15,8 @@ jobs:
       run: sudo xcode-select -switch /Applications/Xcode_13.0.app && /usr/bin/xcodebuild -version
     - name: Move to frontend directory
       run: cd frontend/where2eat
-    - name: List Simulators
-      run: xcrun instruments -s
+    - name: List Destinations
+      run: xcodebuild -scheme "where2eat" -showdestinations
     - name: Run tests
       run: xcodebuild test -scheme where2eat -project where2eat.xcodeproj -destination 'platform=iOS Simulator,name=Any iOS Simulator Device,OS=latest' | xcpretty && exit ${PIPESTATUS[0]}
 
