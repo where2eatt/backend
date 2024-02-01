@@ -10,9 +10,9 @@ jobs:
   run_tests:
     runs-on: macos-latest
     steps:
-    - uses: maxim-lobanov/setup-xcode@v1
-      with:
-        xcode-version: latest-stable
+    # - uses: maxim-lobanov/setup-xcode@v1
+    #   with:
+    #     xcode-version: latest-stable
     - name: List Destinations
       run: |
         echo "aaaaa"
