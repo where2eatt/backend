@@ -17,6 +17,7 @@ jobs:
       run: |
         echo "aaaaa"
         pwd
+        ls
         echo "bbbbb"
         cd frontend/where2eat
         xcodebuild -scheme "where2eat" -showdestinations
