@@ -15,11 +15,8 @@ jobs:
         xcode-version: latest-stable
     - name: List Destinations
       run: |
+        cd ~
         find . -type d | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/| - \1/"
-        echo "aaaaa"
-        pwd
-        ls
-        echo "bbbbb"
         cd frontend/where2eat
         xcodebuild -scheme "where2eat" -showdestinations
     - name: Run tests
