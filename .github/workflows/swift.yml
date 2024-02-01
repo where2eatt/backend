@@ -15,7 +15,9 @@ jobs:
         xcode-version: latest-stable
     - name: List Destinations
       run: |
+        echo "aaaaa"
         pwd
+        echo "bbbbb"
         cd frontend/where2eat
         xcodebuild -scheme "where2eat" -showdestinations
     - name: Run tests
