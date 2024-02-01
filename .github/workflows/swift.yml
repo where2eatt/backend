@@ -22,6 +22,6 @@ jobs:
     - name: Run tests
       run: |
         cd frontend/where2eat
-        xcodebuild test -scheme where2eat -project where2eat.xcodeproj -destination 'platform=iOS Simulator,name=Any iOS Simulator Device,OS=15.2'
+        xcodebuild test -scheme where2eat -project where2eat.xcodeproj -destination 'id=0BA02674-9F7C-49F9-A7F4-4BEFCF1C4205'
         xcpretty && exit ${PIPESTATUS[0]}
 
