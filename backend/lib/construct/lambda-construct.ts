@@ -3,20 +3,26 @@ import { IFunction, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { Construct } from 'constructs';
 
-export interface LambdaConstructProps {
-  dbUrl: string;
-  apiUrl: string;
-}
-
 export class LambdaConstruct extends Construct {
- readonly testLambda: IFunction;
+ readonly createUser: IFunction;
+//  readonly updateUser: IFunction;
+ readonly getUser: IFunction;
 
- constructor(scope: Construct, id: string, props: LambdaConstructProps) {
+ constructor(scope: Construct, id: string) {
   super(scope, id);
 
-  this.testLambda = new NodejsFunction(this, 'testLambda', {
-    functionName: 'TestLambda',
-    entry: './handlers/testLambda.ts',
+  this.createUser = new NodejsFunction(this, 'createUser', {
+    functionName: 'CreateUser',
+    entry: './handlers/create-user.ts',
+    memorySize: 256,
+    runtime: Runtime.NODEJS_20_X,
+    timeout: Duration.seconds(15),
+    depsLockFilePath: './package-lock.json',
+  });
+
+  this.getUser = new NodejsFunction(this, 'getUser', {
+    functionName: 'GetUser',
+    entry: './handlers/create-user.ts',
     memorySize: 256,
     runtime: Runtime.NODEJS_20_X,
     timeout: Duration.seconds(15),

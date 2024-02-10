@@ -24,6 +24,23 @@
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
+## Deploying backend
+
+In the backend directory:
+
+```bash
+npm i
+```
+
+To see changes in the backend stack:
+```bash
+npx cdk diff --profile [profile name created above]
+```
+Next, to deploy:
+```bash
+npx cdk deploy --profile [profile name created above]
+```
+
 ## Useful commands
 
 * `npm run build`   compile typescript to js
