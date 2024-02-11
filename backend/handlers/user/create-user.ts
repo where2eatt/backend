@@ -16,7 +16,7 @@ export const handler: Handler = async (event, context) => {
         preferences: { S: JSON.stringify(preferences) },
       },
       ConditionExpression: 'attribute_not_exists(username)',
-      ReturnValues: 'ALL_OLD' as const,
+      ReturnValues: 'ALL_NEW' as const,
     };
     const result = await ddbClient.send(new PutItemCommand(params));;
     return {

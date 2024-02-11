@@ -17,7 +17,7 @@ export const handler: Handler = async (event, context) => {
         sessionId: { S: sessionId },
         sessionHostUsername: { S: username },
       },
-      ReturnValues: 'ALL_OLD' as const,
+      ReturnValues: 'ALL_NEW' as const,
     };
     const result = (await ddbClient.send(new PutItemCommand(params))).Attributes;
     return {
