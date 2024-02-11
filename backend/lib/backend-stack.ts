@@ -12,17 +12,30 @@ export class BackendStack extends Stack {
     const usersTable = new dynamodb.Table(this, 'UsersTable', {
       tableName: 'Users',
       partitionKey: {
-        name: 'userId',
+        name: 'username',
+        type: dynamodb.AttributeType.STRING,
+      },
+      removalPolicy: RemovalPolicy.DESTROY,
+    });
+
+    const sessionsTable = new dynamodb.Table(this, 'SessionsTable', {
+      tableName: 'Sessions',
+      partitionKey: {
+        name: 'sessionId',
         type: dynamodb.AttributeType.STRING,
       },
       removalPolicy: RemovalPolicy.DESTROY,
     });
 
     const apiGateway = new ApiGatewayConstruct(this, 'api gateway');
-
     const lambda = new LambdaConstruct(this, 'lambda');
 
+    usersTable.grantWriteData(lambda.createUser);
+    usersTable.grantReadData(lambda.getUser);
+    usersTable.grantWriteData(lambda.updateUser);
+
     const user = apiGateway.api.root.addResource('user');
+
     user.addMethod(
       'POST',
       new LambdaIntegration(lambda.createUser),
@@ -31,9 +44,9 @@ export class BackendStack extends Stack {
         api: apiGateway.api,
         name: 'create-user-model',
         schema: {
-        username: JsonSchemaType.STRING,
-        image: JsonSchemaType.STRING,
-        bio: JsonSchemaType.STRING,
+          username: JsonSchemaType.STRING,
+          bio: JsonSchemaType.STRING,
+          preferences: JsonSchemaType.OBJECT,
         },
         required: ['username'],
       })
@@ -42,7 +55,21 @@ export class BackendStack extends Stack {
       'GET',
       new LambdaIntegration(lambda.getUser),
       this.queryParamValidationOptions({
-      userId: true,
+        username: true,
+      })
+    );
+    user.addMethod(
+      'PATCH',
+      new LambdaIntegration(lambda.updateUser),
+      this.jsonBodyValidationOptions({
+        api: apiGateway.api,
+        name: 'update-user-model',
+        schema: {
+          username: JsonSchemaType.STRING,
+          bio: JsonSchemaType.STRING,
+          preferences: JsonSchemaType.OBJECT,
+        },
+        required: [],
       })
     );
   }

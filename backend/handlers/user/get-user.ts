@@ -1,11 +1,21 @@
 import { Handler } from "aws-lambda";
+import {
+  DynamoDBClient,
+  GetItemCommand,
+  GetItemCommandInput,
+} from '@aws-sdk/client-dynamodb';
 
-
+const ddbClient = new DynamoDBClient({ region: 'us-west-2' });
 export const handler: Handler = async (event, context) => {
-  const { userId } = event.queryStringParameters;
+  const { username } = event.queryStringParameters;
+  console.log('username', username)
 
   try {
-    const result = {};
+    const params: GetItemCommandInput = {
+      TableName: 'Users',
+      Key: username,
+    };
+    const result = await ddbClient.send(new GetItemCommand(params));;
     if (result) {
       return {
         statusCode: 200,
