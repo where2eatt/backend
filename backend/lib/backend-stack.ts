@@ -4,13 +4,14 @@ import { LambdaConstruct } from './construct/lambda-construct';
 import { ApiGatewayConstruct } from './construct/apigateway-construct';
 import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 import { AuthorizationType, IAuthorizer, IRestApi, JsonSchema, JsonSchemaType, LambdaIntegration, MethodOptions, Model } from 'aws-cdk-lib/aws-apigateway';
+import { SESSIONS_TABLE_NAME, USERS_TABLE_NAME } from '../data/constants';
 
 export class BackendStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
     const usersTable = new dynamodb.Table(this, 'UsersTable', {
-      tableName: 'Users',
+      tableName: USERS_TABLE_NAME,
       partitionKey: {
         name: 'username',
         type: dynamodb.AttributeType.STRING,
@@ -19,7 +20,7 @@ export class BackendStack extends Stack {
     });
 
     const sessionsTable = new dynamodb.Table(this, 'SessionsTable', {
-      tableName: 'Sessions',
+      tableName: SESSIONS_TABLE_NAME,
       partitionKey: {
         name: 'sessionId',
         type: dynamodb.AttributeType.STRING,
@@ -27,14 +28,23 @@ export class BackendStack extends Stack {
       removalPolicy: RemovalPolicy.DESTROY,
     });
 
-    const apiGateway = new ApiGatewayConstruct(this, 'api gateway');
     const lambda = new LambdaConstruct(this, 'lambda');
 
     usersTable.grantWriteData(lambda.createUser);
     usersTable.grantReadData(lambda.getUser);
     usersTable.grantWriteData(lambda.updateUser);
 
+    sessionsTable.grantWriteData(lambda.createSession);
+    sessionsTable.grantReadData(lambda.getSession);
+    sessionsTable.grantWriteData(lambda.updateSession);
+
+    sessionsTable.grantReadData(lambda.generateSessionRecs);
+
+    const apiGateway = new ApiGatewayConstruct(this, 'api gateway');
+
     const user = apiGateway.api.root.addResource('user');
+    const session = apiGateway.api.root.addResource('session');
+    const recommendation = apiGateway.api.root.addResource('recommendation');
 
     user.addMethod(
       'POST',
@@ -70,6 +80,47 @@ export class BackendStack extends Stack {
           preferences: JsonSchemaType.OBJECT,
         },
         required: [],
+      })
+    );
+
+    session.addMethod(
+      'POST',
+      new LambdaIntegration(lambda.createSession),
+      this.jsonBodyValidationOptions({
+        api: apiGateway.api,
+        name: 'create-session-model',
+        schema: {
+          username: JsonSchemaType.STRING,
+        },
+        required: ['username'],
+      })
+    );
+    session.addMethod(
+      'GET',
+      new LambdaIntegration(lambda.getSession),
+      this.queryParamValidationOptions({
+        sessionId: true,
+      })
+    );
+    session.addMethod(
+      'PATCH',
+      new LambdaIntegration(lambda.updateSession),
+      this.jsonBodyValidationOptions({
+        api: apiGateway.api,
+        name: 'update-session-model',
+        schema: {
+          sessionId: JsonSchemaType.STRING,
+          sessionHostUsername: JsonSchemaType.STRING,
+        },
+        required: ['sessionId'],
+      })
+    );
+
+    recommendation.addMethod(
+      'GET',
+      new LambdaIntegration(lambda.generateSessionRecs),
+      this.queryParamValidationOptions({
+        sessionId: true,
       })
     );
   }

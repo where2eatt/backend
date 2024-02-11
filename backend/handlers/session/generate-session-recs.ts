@@ -4,22 +4,25 @@ import {
   GetItemCommand,
   GetItemCommandInput,
 } from '@aws-sdk/client-dynamodb';
-import { USERS_TABLE_NAME } from "../../data/constants";
 
 const ddbClient = new DynamoDBClient({ region: 'us-west-2' });
 export const handler: Handler = async (event, context) => {
-  const { username } = event.queryStringParameters;
+  const { sessionId } = event.queryStringParameters;
 
   try {
     const params: GetItemCommandInput = {
-      TableName: USERS_TABLE_NAME,
-      Key: { username: { S: username } },
+      TableName: 'Sessions',
+      Key: sessionId,
     };
-    const user = (await ddbClient.send(new GetItemCommand(params))).Item;
-    if (user) {
+    const result = await ddbClient.send(new GetItemCommand(params));;
+
+    // use session data to find recommendations
+
+
+    if (result) {
       return {
         statusCode: 200,
-        body: JSON.stringify(user),
+        body: JSON.stringify(result),
         headers: {
           'Access-Control-Allow-Origin': '*',
         },

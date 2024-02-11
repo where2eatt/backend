@@ -1,5 +1,6 @@
 import { Handler } from "aws-lambda";
 import { DynamoDBClient, PutItemCommand } from '@aws-sdk/client-dynamodb';
+import { USERS_TABLE_NAME } from "../../data/constants";
 
 const ddbClient = new DynamoDBClient({ region: 'us-west-2' });
 export const handler: Handler = async (event, context) => {
@@ -9,12 +10,13 @@ export const handler: Handler = async (event, context) => {
 
   try {
     const params = {
-      TableName: 'Users',
+      TableName: USERS_TABLE_NAME,
       Item: {
         username: { S: username },
         preferences: { S: JSON.stringify(preferences) },
       },
       ConditionExpression: 'attribute_not_exists(username)',
+      ReturnValues: 'ALL_OLD' as const,
     };
     const result = await ddbClient.send(new PutItemCommand(params));;
     return {

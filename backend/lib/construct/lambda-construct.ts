@@ -4,38 +4,38 @@ import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { Construct } from 'constructs';
 
 export class LambdaConstruct extends Construct {
- readonly createUser: IFunction;
- readonly updateUser: IFunction;
- readonly getUser: IFunction;
+  readonly createUser: IFunction;
+  readonly updateUser: IFunction;
+  readonly getUser: IFunction;
+  readonly createSession: IFunction;
+  readonly getSession: IFunction;
+  readonly updateSession: IFunction;
+  readonly generateSessionRecs: IFunction;
 
- constructor(scope: Construct, id: string) {
-  super(scope, id);
+  constructor(scope: Construct, id: string) {
+    super(scope, id);
 
-  this.createUser = new NodejsFunction(this, 'createUser', {
-    functionName: 'CreateUser',
-    entry: './handlers/user/create-user.ts',
-    memorySize: 256,
-    runtime: Runtime.NODEJS_20_X,
-    timeout: Duration.seconds(15),
-    depsLockFilePath: './package-lock.json',
-  });
+    this.createUser = this.defaultFunction('CreateUser', './handlers/user/create-user.ts');
+    this.getUser = this.defaultFunction('GetUser', './handlers/user/get-user.ts');
+    this.updateUser = this.defaultFunction('UpdateUser', './handlers/user/update-user.ts');
+  
+    this.createSession = this.defaultFunction('CreateSession', './handlers/session/create-session.ts');
+    this.getSession = this.defaultFunction('GetSession', './handlers/session/get-session.ts');
+    this.updateSession = this.defaultFunction('UpdateSession', './handlers/session/update-session.ts');
+    this.generateSessionRecs = this.defaultFunction('GenerateSessionRecs', './handlers/session/generate-session-recs.ts');
+  }
 
-  this.getUser = new NodejsFunction(this, 'getUser', {
-    functionName: 'GetUser',
-    entry: './handlers/user/get-user.ts',
-    memorySize: 256,
-    runtime: Runtime.NODEJS_20_X,
-    timeout: Duration.seconds(15),
-    depsLockFilePath: './package-lock.json',
-  });
-
-  this.updateUser = new NodejsFunction(this, 'updateUser', {
-    functionName: 'UpdateUser',
-    entry: './handlers/user/update-user.ts',
-    memorySize: 256,
-    runtime: Runtime.NODEJS_20_X,
-    timeout: Duration.seconds(15),
-    depsLockFilePath: './package-lock.json',
-  });
- }
+  private defaultFunction = (
+    funcName: string,
+    handlerPath: string,
+  ): IFunction => {
+    return new NodejsFunction(this, funcName, {
+      functionName: funcName,
+      entry: handlerPath,
+      memorySize: 256,
+      runtime: Runtime.NODEJS_20_X,
+      timeout: Duration.seconds(15),
+      depsLockFilePath: './package-lock.json',
+    });
+  }
 }

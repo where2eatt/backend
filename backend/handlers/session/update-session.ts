@@ -1,5 +1,6 @@
 import { Handler } from "aws-lambda";
 import { DynamoDBClient, UpdateItemCommand } from '@aws-sdk/client-dynamodb';
+import { SESSIONS_TABLE_NAME } from '../../data/constants';
 
 const ddbClient = new DynamoDBClient({ region: 'us-west-2' });
 export const handler: Handler = async (event, context) => {
@@ -8,7 +9,7 @@ export const handler: Handler = async (event, context) => {
 
   try {
     const params = {
-      TableName: 'Sessions',
+      TableName: SESSIONS_TABLE_NAME,
       Key: {
         sessionId: { S: sessionId },
       },
