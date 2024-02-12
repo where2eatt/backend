@@ -15,24 +15,25 @@ struct CreateNewSession: View {
             Color(red: 1, green: 1, blue: 0.9254901960784314)
                 . edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             
-            VStack (alignment: .center, spacing: 20.0) {
+            VStack (alignment: .center) {
                 
                 
                 Text("CREATE A NEW SESSION")
                     .font(.title)
                     .font(.custom("Roboto", size: 26))
                     .fontWeight(.bold)
-                    .padding(40)
+                    .padding(30)
                     .multilineTextAlignment(.center)
-                Spacer()
+                    .fixedSize(horizontal: false, vertical: true)
                 
                 HStack {
                     Text("ATTENDEE #")
                         .font(.title)
                         .font(.custom("Roboto", size: 10))
                         .fontWeight(.semibold)
-                        .padding(30.0)
+                        .padding(20.0)
                         .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                     TextField("Enter Number of Attendees", text: $text)
                         .multilineTextAlignment(.center)
@@ -46,10 +47,11 @@ struct CreateNewSession: View {
                         .font(.title)
                         .font(.custom("Roboto", size: 10))
                         .fontWeight(.semibold)
-                        .padding(30.0)
+                        .padding(20.0)
                         .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
                     
-                    TextField("Enter Number of Attendees", text: $text)
+                    TextField("Enter Date Range", text: $text)
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .border(Color.gray, width: 1)
@@ -61,14 +63,16 @@ struct CreateNewSession: View {
                         .font(.title)
                         .font(.custom("Roboto", size: 10))
                         .fontWeight(.semibold)
-                        .padding(30.0)
+                        .padding(20.0)
                         .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
                     
-                    TextField("Enter Number of Attendees", text: $text)
+                    TextField("Enter Time Range", text: $text)
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .border(Color.gray, width: 1)
                         .padding()
+                    
                 }
                 
                 HStack {
@@ -76,10 +80,11 @@ struct CreateNewSession: View {
                         .font(.title)
                         .font(.custom("Roboto", size: 10))
                         .fontWeight(.semibold)
-                        .padding(30.0)
+                        .padding(20.0)
                         .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
                     
-                    TextField("Enter Number of Attendees", text: $text)
+                    TextField("Enter Event Type", text: $text)
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .border(Color.gray, width: 1)

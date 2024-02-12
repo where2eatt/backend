@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 
 struct ContentView: View {
-
+    
     var body: some View {
         ZStack {
             Color(red: 1, green: 1, blue: 0.9254901960784314)
@@ -26,12 +26,36 @@ struct ContentView: View {
                 
                 Spacer()
                 
-            
+                Image("logo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 300)
+                    .padding()
+                
+                    .font(.title2)
+                    .buttonStyle(.borderedProminent)
+                    .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
+                
+                Spacer()
+                
+                Button("LOG IN") {
+                    
+                }
+
                 .font(.title2)
                 .buttonStyle(.borderedProminent)
                 .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
+                .frame(width: 250, height: 50)
                 
-                Spacer()
+                Button("SIGN UP") {
+                    
+                }
+                
+                .font(.title2)
+                .buttonStyle(.borderedProminent)
+                .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
+                .frame(width: 250, height: 100)
+                
                 
                 Rectangle()
                     .fill(Color(red: 0.9607843137254902, green: 0.9607843137254902, blue: 0.9607843137254902))
@@ -63,7 +87,6 @@ struct ContentView: View {
     }
     
 }
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
