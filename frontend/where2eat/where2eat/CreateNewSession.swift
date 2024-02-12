@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 
 struct CreateNewSession: View {
-
+    @State private var text = ""
     var body: some View {
         ZStack {
             Color(red: 1, green: 1, blue: 0.9254901960784314)
@@ -23,8 +23,68 @@ struct CreateNewSession: View {
                     .font(.custom("Roboto", size: 26))
                     .fontWeight(.bold)
                     .padding(40)
-                
+                    .multilineTextAlignment(.center)
                 Spacer()
+                
+                HStack {
+                    Text("ATTENDEE #")
+                        .font(.title)
+                        .font(.custom("Roboto", size: 10))
+                        .fontWeight(.semibold)
+                        .padding(30.0)
+                        .multilineTextAlignment(.center)
+                    
+                    TextField("Enter Number of Attendees", text: $text)
+                        .multilineTextAlignment(.center)
+                        .font(.title)
+                        .border(Color.gray, width: 1)
+                        .padding()
+                }
+                
+                HStack {
+                    Text("DATE RANGE")
+                        .font(.title)
+                        .font(.custom("Roboto", size: 10))
+                        .fontWeight(.semibold)
+                        .padding(30.0)
+                        .multilineTextAlignment(.center)
+                    
+                    TextField("Enter Number of Attendees", text: $text)
+                        .multilineTextAlignment(.center)
+                        .font(.title)
+                        .border(Color.gray, width: 1)
+                        .padding()
+                }
+                
+                HStack {
+                    Text("TIME RANGE")
+                        .font(.title)
+                        .font(.custom("Roboto", size: 10))
+                        .fontWeight(.semibold)
+                        .padding(30.0)
+                        .multilineTextAlignment(.center)
+                    
+                    TextField("Enter Number of Attendees", text: $text)
+                        .multilineTextAlignment(.center)
+                        .font(.title)
+                        .border(Color.gray, width: 1)
+                        .padding()
+                }
+                
+                HStack {
+                    Text("EVENT TYPE")
+                        .font(.title)
+                        .font(.custom("Roboto", size: 10))
+                        .fontWeight(.semibold)
+                        .padding(30.0)
+                        .multilineTextAlignment(.center)
+                    
+                    TextField("Enter Number of Attendees", text: $text)
+                        .multilineTextAlignment(.center)
+                        .font(.title)
+                        .border(Color.gray, width: 1)
+                        .padding()
+                }
                 
                 Button("GENERATE SESSION NEW LINK") {
                     
@@ -67,9 +127,9 @@ struct CreateNewSession: View {
     
 }
 
-struct CreateNewSessionPreview: PreviewProvider {
+struct CreateNewSession_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        CreateNewSession()
     }
 }
 

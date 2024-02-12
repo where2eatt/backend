@@ -1,5 +1,5 @@
 //
-//  Home.swift
+//  Login.swift
 //  where2eat
 //
 //  Created by stlp on 2/11/24.
@@ -8,7 +8,7 @@
 import SwiftUI
 import UIKit
 
-struct ContentView: View {
+struct Login: View {
 
     var body: some View {
         ZStack {
@@ -18,7 +18,7 @@ struct ContentView: View {
             VStack (alignment: .center, spacing: 20.0) {
                 
                 
-                Text("WHERE2EAT")
+                Text("LOGIN")
                     .font(.title)
                     .font(.custom("Roboto", size: 26))
                     .fontWeight(.bold)
@@ -64,9 +64,10 @@ struct ContentView: View {
     
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct Login_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Login()
     }
 }
+
 

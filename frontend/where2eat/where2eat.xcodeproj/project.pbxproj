@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7A4893EB2B69A55500A559E6 /* where2eatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4893EA2B69A55500A559E6 /* where2eatApp.swift */; };
-		7A4893ED2B69A55500A559E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4893EC2B69A55500A559E6 /* ContentView.swift */; };
+		7A4893ED2B69A55500A559E6 /* Sessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4893EC2B69A55500A559E6 /* Sessions.swift */; };
 		7A4893EF2B69A55600A559E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A4893EE2B69A55600A559E6 /* Assets.xcassets */; };
 		7A4893F22B69A55600A559E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A4893F12B69A55600A559E6 /* Preview Assets.xcassets */; };
 		7A4893FC2B69A55600A559E6 /* where2eatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4893FB2B69A55600A559E6 /* where2eatTests.swift */; };
@@ -19,6 +19,10 @@
 		DB33759C2B79A2A300B110F6 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB33759B2B79A2A300B110F6 /* Preferences.swift */; };
 		DB33759E2B79A2CE00B110F6 /* Places.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB33759D2B79A2CE00B110F6 /* Places.swift */; };
 		DB3375A02B79A2E500B110F6 /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB33759F2B79A2E500B110F6 /* Chatroom.swift */; };
+		DB3375A22B79EA6100B110F6 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB3375A12B79EA6100B110F6 /* Storyboard.storyboard */; };
+		DB3375A42B79ECC200B110F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3375A32B79ECC200B110F6 /* ContentView.swift */; };
+		DB3375A62B79ECD400B110F6 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3375A52B79ECD400B110F6 /* Login.swift */; };
+		DB3375A82B79ECE200B110F6 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3375A72B79ECE200B110F6 /* Signup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +45,7 @@
 /* Begin PBXFileReference section */
 		7A4893E72B69A55500A559E6 /* where2eat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = where2eat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A4893EA2B69A55500A559E6 /* where2eatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = where2eatApp.swift; sourceTree = "<group>"; };
-		7A4893EC2B69A55500A559E6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7A4893EC2B69A55500A559E6 /* Sessions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sessions.swift; sourceTree = "<group>"; };
 		7A4893EE2B69A55600A559E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A4893F12B69A55600A559E6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7A4893F72B69A55600A559E6 /* where2eatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = where2eatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +58,10 @@
 		DB33759B2B79A2A300B110F6 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		DB33759D2B79A2CE00B110F6 /* Places.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Places.swift; sourceTree = "<group>"; };
 		DB33759F2B79A2E500B110F6 /* Chatroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
+		DB3375A12B79EA6100B110F6 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		DB3375A32B79ECC200B110F6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DB3375A52B79ECD400B110F6 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		DB3375A72B79ECE200B110F6 /* Signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +113,11 @@
 			isa = PBXGroup;
 			children = (
 				7A4893EA2B69A55500A559E6 /* where2eatApp.swift */,
-				7A4893EC2B69A55500A559E6 /* ContentView.swift */,
+				7A4893EC2B69A55500A559E6 /* Sessions.swift */,
+				DB3375A32B79ECC200B110F6 /* ContentView.swift */,
+				DB3375A52B79ECD400B110F6 /* Login.swift */,
+				DB3375A72B79ECE200B110F6 /* Signup.swift */,
+				DB3375A12B79EA6100B110F6 /* Storyboard.storyboard */,
 				DB3375972B79A06D00B110F6 /* CreateNewSession.swift */,
 				DB3375992B79A27800B110F6 /* Calendar.swift */,
 				DB33759B2B79A2A300B110F6 /* Preferences.swift */,
@@ -248,6 +260,7 @@
 			files = (
 				7A4893F22B69A55600A559E6 /* Preview Assets.xcassets in Resources */,
 				7A4893EF2B69A55600A559E6 /* Assets.xcassets in Resources */,
+				DB3375A22B79EA6100B110F6 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,12 +285,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A4893ED2B69A55500A559E6 /* ContentView.swift in Sources */,
+				7A4893ED2B69A55500A559E6 /* Sessions.swift in Sources */,
+				DB3375A82B79ECE200B110F6 /* Signup.swift in Sources */,
 				7A4893EB2B69A55500A559E6 /* where2eatApp.swift in Sources */,
 				DB33759C2B79A2A300B110F6 /* Preferences.swift in Sources */,
 				DB3375982B79A06D00B110F6 /* CreateNewSession.swift in Sources */,
 				DB33759A2B79A27800B110F6 /* Calendar.swift in Sources */,
 				DB3375A02B79A2E500B110F6 /* Chatroom.swift in Sources */,
+				DB3375A62B79ECD400B110F6 /* Login.swift in Sources */,
+				DB3375A42B79ECC200B110F6 /* ContentView.swift in Sources */,
 				DB33759E2B79A2CE00B110F6 /* Places.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
