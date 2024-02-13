@@ -17,26 +17,23 @@ struct ContentView: View {
             
             VStack (alignment: .center, spacing: 20.0) {
                 
-                
                 Text("WHERE2EAT")
                     .font(.title)
                     .font(.custom("Roboto", size: 26))
                     .fontWeight(.bold)
                     .padding(40)
                 
-                Spacer()
                 
                 Image("logo")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 300)
+                    .frame(width: 250)
                     .padding()
                 
                     .font(.title2)
                     .buttonStyle(.borderedProminent)
                     .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
                 
-                Spacer()
                 
                 Button("LOG IN") {
                     
@@ -45,7 +42,7 @@ struct ContentView: View {
                 .font(.title2)
                 .buttonStyle(.borderedProminent)
                 .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
-                .frame(width: 250, height: 50)
+                .frame(width: 300, height: 50)
                 
                 Button("SIGN UP") {
                     
@@ -54,34 +51,8 @@ struct ContentView: View {
                 .font(.title2)
                 .buttonStyle(.borderedProminent)
                 .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
-                .frame(width: 250, height: 100)
+                .frame(width: 300, height: 100)
                 
-                
-                Rectangle()
-                    .fill(Color(red: 0.9607843137254902, green: 0.9607843137254902, blue: 0.9607843137254902))
-                    .frame(height: 200)
-                
-                    .overlay(
-                        HStack {
-                            Image("home")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100)
-                                .padding()
-                            
-                            Image("plus")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 70)
-                                .padding()
-                            
-                            Image("chat")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 90)
-                                .padding()
-                        }
-                    )
             }
         }
     }

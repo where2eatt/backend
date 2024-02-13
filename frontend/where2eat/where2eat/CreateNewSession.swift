@@ -9,7 +9,11 @@ import SwiftUI
 import UIKit
 
 struct CreateNewSession: View {
-    @State private var text = ""
+    @State private var num = ""
+    @State private var date = ""
+    @State private var time = ""
+    @State private var event = ""
+
     var body: some View {
         ZStack {
             Color(red: 1, green: 1, blue: 0.9254901960784314)
@@ -35,7 +39,7 @@ struct CreateNewSession: View {
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                     
-                    TextField("Enter Number of Attendees", text: $text)
+                    TextField("Enter Number of Attendees", text: $num)
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .border(Color.gray, width: 1)
@@ -51,7 +55,7 @@ struct CreateNewSession: View {
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                     
-                    TextField("Enter Date Range", text: $text)
+                    TextField("Enter Date Range", text: $date)
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .border(Color.gray, width: 1)
@@ -67,7 +71,7 @@ struct CreateNewSession: View {
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                     
-                    TextField("Enter Time Range", text: $text)
+                    TextField("Enter Time Range", text: $time)
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .border(Color.gray, width: 1)
@@ -84,7 +88,7 @@ struct CreateNewSession: View {
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                     
-                    TextField("Enter Event Type", text: $text)
+                    TextField("Enter Event Type", text: $event)
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .border(Color.gray, width: 1)
@@ -103,7 +107,7 @@ struct CreateNewSession: View {
                 
                 Rectangle()
                     .fill(Color(red: 0.9607843137254902, green: 0.9607843137254902, blue: 0.9607843137254902))
-                    .frame(height: 200)
+                    .frame(height: 100)
                 
                     .overlay(
                         HStack {

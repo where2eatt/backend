@@ -24,12 +24,18 @@ struct Sessions: View {
                     .fontWeight(.bold)
                     .padding(40)
                 
-                Spacer()
+//                Spacer()
                 
-                Button("Dinner with CSE 403 Group") {
-                    
-                }
-            
+//                Button("Dinner with CSE 403 Group") {
+//                    
+//                }
+                
+                Image("mysession") 
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 300)
+                    .padding()
+                
                 .font(.title2)
                 .buttonStyle(.borderedProminent)
                 .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
@@ -38,7 +44,7 @@ struct Sessions: View {
                 
                 Rectangle()
                     .fill(Color(red: 0.9607843137254902, green: 0.9607843137254902, blue: 0.9607843137254902))
-                    .frame(height: 200)
+                    .frame(height: 100)
                 
                     .overlay(
                         HStack {

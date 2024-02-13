@@ -28,7 +28,7 @@ struct Chatroom: View {
                 
                 Rectangle()
                     .fill(Color(red: 0.9607843137254902, green: 0.9607843137254902, blue: 0.9607843137254902))
-                    .frame(height: 200)
+                    .frame(height: 100)
                 
                     .overlay(
                         HStack {
