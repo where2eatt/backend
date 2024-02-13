@@ -43,6 +43,4 @@ WHERE2Eat is an iOS app that will be used to help individuals, pairs, or groups 
   - Can login and sign up to the app
   - Can view some template sessions
   - Can enter information to create a new session
-  - 
-   
     
