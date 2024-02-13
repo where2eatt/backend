@@ -18,3 +18,29 @@ WHERE2Eat is an iOS app that will be used to help individuals, pairs, or groups 
 - File to generate link and create new session
 - File to create chatroom for group to communicate
 - File to create calender availabilities
+
+- # Repository Updates
+  - Building/Running the System
+      - Download XCode
+      - Clone this file
+      - Download iOS 17.2
+      - Open up where2eat.xcodeproj in the simulator to run it
+  - How to Test the System
+    - Run the simulator
+    - Make sure the interactions work as expected (text boxes, buttons, navigation bar) lead to the expected output
+    - Use the Accessibility Inspector on XCode by going to Developer Tools and then Accessibility Inspector to test the accesibility
+   
+  - # Technical Processes
+    - Version Control
+      - Using GitHub with regular commits and updates to the appropriate folders
+    - Bug Tracking
+      - Documented in our project live document
+   -  Testing and CI
+       - Using GitHub Actions that every push triggers
+       - Makes sure that every change complies with what is expected in terms of any change not breaking the code
+    
+- # Working Use Cases
+  - Can login and sign up to the app
+  - Can view some template sessions
+  - Can enter information to create a new session
+    
