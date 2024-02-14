@@ -22,7 +22,7 @@
 		DB3375A42B79ECC200B110F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3375A32B79ECC200B110F6 /* ContentView.swift */; };
 		DB3375A62B79ECD400B110F6 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3375A52B79ECD400B110F6 /* Login.swift */; };
 		DB3375A82B79ECE200B110F6 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3375A72B79ECE200B110F6 /* Signup.swift */; };
-		DBE2D1F32B7A00B400F68C3D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE2D1F22B7A00B400F68C3D /* Storyboard.storyboard */; };
+		DBE2D1F52B7CD9D100F68C3D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE2D1F42B7CD9D100F68C3D /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +61,7 @@
 		DB3375A32B79ECC200B110F6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DB3375A52B79ECD400B110F6 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		DB3375A72B79ECE200B110F6 /* Signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
-		DBE2D1F22B7A00B400F68C3D /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		DBE2D1F42B7CD9D100F68C3D /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +115,7 @@
 				7A4893EA2B69A55500A559E6 /* where2eatApp.swift */,
 				7A4893EC2B69A55500A559E6 /* Sessions.swift */,
 				DB3375A32B79ECC200B110F6 /* ContentView.swift */,
-				DBE2D1F22B7A00B400F68C3D /* Storyboard.storyboard */,
+				DBE2D1F42B7CD9D100F68C3D /* Storyboard.storyboard */,
 				DB3375A52B79ECD400B110F6 /* Login.swift */,
 				DB3375A72B79ECE200B110F6 /* Signup.swift */,
 				DB3375972B79A06D00B110F6 /* CreateNewSession.swift */,
@@ -260,7 +260,7 @@
 			files = (
 				7A4893F22B69A55600A559E6 /* Preview Assets.xcassets in Resources */,
 				7A4893EF2B69A55600A559E6 /* Assets.xcassets in Resources */,
-				DBE2D1F32B7A00B400F68C3D /* Storyboard.storyboard in Resources */,
+				DBE2D1F52B7CD9D100F68C3D /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

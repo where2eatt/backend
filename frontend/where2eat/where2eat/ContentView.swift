@@ -11,6 +11,7 @@ import UIKit
 struct ContentView: View {
     
     var body: some View {
+        
         ZStack {
             Color(red: 1, green: 1, blue: 0.9254901960784314)
                 . edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -35,9 +36,9 @@ struct ContentView: View {
                     .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
                 
                 
-                Button("LOG IN") {
-                    
+                Button("LOG IN"){
                 }
+                
 
                 .font(.title2)
                 .buttonStyle(.borderedProminent)

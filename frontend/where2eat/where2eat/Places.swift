@@ -17,19 +17,19 @@ struct Places: View {
             
             VStack (alignment: .center, spacing: 20.0) {
                 
-                
                 Text("PLACES TO GO")
                     .font(.title)
                     .font(.custom("Roboto", size: 26))
                     .fontWeight(.bold)
                     .padding(40)
                 
-                
                 Image("places")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 300)
                     .padding()
+                
+                Spacer()
                 
                 Rectangle()
                     .fill(Color(red: 0.9607843137254902, green: 0.9607843137254902, blue: 0.9607843137254902))

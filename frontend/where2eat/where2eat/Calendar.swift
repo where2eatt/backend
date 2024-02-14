@@ -12,6 +12,10 @@ class ViewController: UIViewController
 {
     
 }
+
+import SwiftUI
+import EventKit
+
 struct Calendar: View {
 
     var body: some View {
@@ -19,7 +23,7 @@ struct Calendar: View {
             Color(red: 1, green: 1, blue: 0.9254901960784314)
                 . edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             
-            VStack (alignment: .center, spacing: 20.0) {
+            VStack (alignment: .center) {
                 
                 
                 Text("MY CALENDAR AVAILABILITY")
@@ -28,11 +32,43 @@ struct Calendar: View {
                     .fontWeight(.bold)
                     .padding(40)
                 
-                Spacer()
+                Image("calendar")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 350)
+//                    .padding()
                 
-                DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/, label: { Text("From") })
+                Text("January 8th")
+                    .font(.title)
+                    .font(.custom("Roboto", size: 10))
+                    .fontWeight(.semibold)
+                    .padding(10.0)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
                 
-                DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/, label: { Text("To") })
+                HStack {
+                    Text("FROM")
+                        .font(.title)
+                        .font(.custom("Roboto", size: 10))
+                        .fontWeight(.semibold)
+                        .padding(20.0)
+                        .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
+                    
+                    DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/, label: { })
+                }
+                
+                HStack {
+                    Text("TO")
+                        .font(.title)
+                        .font(.custom("Roboto", size: 10))
+                        .fontWeight(.semibold)
+                        .padding(20.0)
+                        .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
+                    
+                    DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/, label: { })
+                }
                
                 Spacer()
                 

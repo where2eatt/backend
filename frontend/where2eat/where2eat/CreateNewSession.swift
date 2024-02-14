@@ -41,7 +41,7 @@ struct CreateNewSession: View {
                     
                     TextField("Enter Number of Attendees", text: $num)
                         .multilineTextAlignment(.center)
-                        .font(.title)
+                        .font(.subheadline)
                         .border(Color.gray, width: 1)
                         .padding()
                 }
@@ -57,7 +57,7 @@ struct CreateNewSession: View {
                     
                     TextField("Enter Date Range", text: $date)
                         .multilineTextAlignment(.center)
-                        .font(.title)
+                        .font(.subheadline)
                         .border(Color.gray, width: 1)
                         .padding()
                 }
@@ -73,7 +73,7 @@ struct CreateNewSession: View {
                     
                     TextField("Enter Time Range", text: $time)
                         .multilineTextAlignment(.center)
-                        .font(.title)
+                        .font(.subheadline)
                         .border(Color.gray, width: 1)
                         .padding()
                     
@@ -90,7 +90,7 @@ struct CreateNewSession: View {
                     
                     TextField("Enter Event Type", text: $event)
                         .multilineTextAlignment(.center)
-                        .font(.title)
+                        .font(.subheadline)
                         .border(Color.gray, width: 1)
                         .padding()
                 }
