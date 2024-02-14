@@ -23,38 +23,9 @@ struct Chatroom: View {
                     .font(.custom("Roboto", size: 26))
                     .fontWeight(.bold)
                     .padding(40)
-                
-                Spacer()
-                
-                Rectangle()
-                    .fill(Color(red: 0.9607843137254902, green: 0.9607843137254902, blue: 0.9607843137254902))
-                    .frame(height: 100)
-                
-                    .overlay(
-                        HStack {
-                            Image("home")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100)
-                                .padding()
-                            
-                            Image("plus")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 70)
-                                .padding()
-                            
-                            Image("chat")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 90)
-                                .padding()
-                        }
-                    )
             }
         }
     }
-    
 }
 
 struct Chatroom_Previews: PreviewProvider {

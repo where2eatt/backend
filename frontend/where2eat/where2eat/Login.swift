@@ -73,7 +73,7 @@ struct Login: View {
         //    .navigationTitle("Login")
             
             .fullScreenCover(isPresented: $navigateToSessions) {
-                Sessions()
+                Home()
             }
         }
     }

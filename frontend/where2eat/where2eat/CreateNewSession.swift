@@ -102,34 +102,6 @@ struct CreateNewSession: View {
                 .font(.title2)
                 .buttonStyle(.borderedProminent)
                 .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
-                
-                Spacer()
-                
-                Rectangle()
-                    .fill(Color(red: 0.9607843137254902, green: 0.9607843137254902, blue: 0.9607843137254902))
-                    .frame(height: 100)
-                
-                    .overlay(
-                        HStack {
-                            Image("home")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100)
-                                .padding()
-                            
-                            Image("plus")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 70)
-                                .padding()
-                            
-                            Image("chat")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 90)
-                                .padding()
-                        }
-                    )
             }
         }
     }
