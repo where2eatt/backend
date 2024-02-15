@@ -9,8 +9,8 @@ import SwiftUI
 import UIKit
 
 struct ContentView: View {
-    
     @State private var isShowingLogin = false
+    @State private var isShowingSignup = false
     
     var body: some View {
         
@@ -36,22 +36,27 @@ struct ContentView: View {
                     Button("LOG IN") {
                         isShowingLogin = true
                     }
-                    .font(.title2)
-                    .buttonStyle(.borderedProminent)
-                    .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
-                    .frame(width: 300, height: 50)
-                    .fullScreenCover(isPresented: $isShowingLogin) {
-                        Login()
-                    }
+                        .font(.title2)
+                        .buttonStyle(.borderedProminent)
+                        .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
+                        .frame(width: 300, height: 50)
+
                     
                     Button("SIGN UP") {
-                        
+                        isShowingSignup = true
                     }
-                    .font(.title2)
-                    .buttonStyle(.borderedProminent)
-                    .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
-                    .frame(width: 300, height: 100)
+                        .font(.title2)
+                        .buttonStyle(.borderedProminent)
+                        .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
+                        .frame(width: 300, height: 100)
                     
+
+                    .sheet(isPresented: $isShowingLogin) {
+                        Login()
+                    }
+                    .sheet(isPresented: $isShowingSignup) {
+                        Signup()
+                    }
                 }
             }
         }

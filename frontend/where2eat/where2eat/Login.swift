@@ -12,7 +12,7 @@ struct Login: View {
     @State private var username = ""
     @State private var password = ""
     @State private var showErrorAlert = false
-    @State private var navigateToSessions = false
+    @State private var navigateToHome = false
     
     var body: some View {
         NavigationView {
@@ -53,7 +53,7 @@ struct Login: View {
                                 if httpResponse.statusCode == 404 {
                                     showErrorAlert = true
                                 } else {
-                                    navigateToSessions = true // Set the state variable to navigate
+                                    navigateToHome = true
                                 }
                             }
                         }.resume()
@@ -72,7 +72,7 @@ struct Login: View {
             }
         //    .navigationTitle("Login")
             
-            .fullScreenCover(isPresented: $navigateToSessions) {
+            .fullScreenCover(isPresented: $navigateToHome) {
                 Home()
             }
         }

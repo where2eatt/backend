@@ -28,34 +28,6 @@ struct Places: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 300)
                     .padding()
-                
-                Spacer()
-                
-                Rectangle()
-                    .fill(Color(red: 0.9607843137254902, green: 0.9607843137254902, blue: 0.9607843137254902))
-                    .frame(height: 100)
-                
-                    .overlay(
-                        HStack {
-                            Image("home")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 100)
-                                .padding()
-                            
-                            Image("plus")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 70)
-                                .padding()
-                            
-                            Image("chat")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 90)
-                                .padding()
-                        }
-                    )
             }
         }
     }
