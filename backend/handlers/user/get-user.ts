@@ -4,6 +4,7 @@ import {
   GetItemCommand,
   GetItemCommandInput,
 } from '@aws-sdk/client-dynamodb';
+import { unmarshall } from '@aws-sdk/util-dynamodb';
 import { USERS_TABLE_NAME } from "../../data/constants";
 
 const ddbClient = new DynamoDBClient({ region: 'us-west-2' });
@@ -19,7 +20,7 @@ export const handler: Handler = async (event, context) => {
     if (user) {
       return {
         statusCode: 200,
-        body: JSON.stringify(user),
+        body: JSON.stringify(unmarshall(user)),
         headers: {
           'Access-Control-Allow-Origin': '*',
         },

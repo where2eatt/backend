@@ -4,6 +4,7 @@ import {
   GetItemCommand,
   GetItemCommandInput,
 } from '@aws-sdk/client-dynamodb';
+import { unmarshall } from '@aws-sdk/util-dynamodb';
 import { SESSIONS_TABLE_NAME } from '../../data/constants';
 
 const ddbClient = new DynamoDBClient({ region: 'us-west-2' });
@@ -13,13 +14,13 @@ export const handler: Handler = async (event, context) => {
   try {
     const params: GetItemCommandInput = {
       TableName: SESSIONS_TABLE_NAME,
-      Key: { username: { S: sessionId } },
+      Key: { sessionId: { S: sessionId } },
     };
-    const session = (await ddbClient.send(new GetItemCommand(params))).Item;
-    if (session) {
+    const sessionResult = (await ddbClient.send(new GetItemCommand(params))).Item;
+    if (sessionResult) {
       return {
         statusCode: 200,
-        body: JSON.stringify(session),
+        body: JSON.stringify(unmarshall(sessionResult)),
         headers: {
           'Access-Control-Allow-Origin': '*',
         },

@@ -19,6 +19,10 @@ export class BackendStack extends Stack {
       removalPolicy: RemovalPolicy.DESTROY,
     });
 
+    /**
+     * a session includes number of people, location, time.
+     * For each user, there is cuisine preference, dietary restrictions, price range
+     */
     const sessionsTable = new dynamodb.Table(this, 'SessionsTable', {
       tableName: SESSIONS_TABLE_NAME,
       partitionKey: {
@@ -92,7 +96,7 @@ export class BackendStack extends Stack {
         schema: {
           username: JsonSchemaType.STRING,
         },
-        required: ['username'],
+        required: ['username', 'location'],
       })
     );
     session.addMethod(
@@ -112,7 +116,7 @@ export class BackendStack extends Stack {
           sessionId: JsonSchemaType.STRING,
           sessionHostUsername: JsonSchemaType.STRING,
         },
-        required: ['sessionId'],
+        required: ['sessionId', 'username', 'preferences'],
       })
     );
 

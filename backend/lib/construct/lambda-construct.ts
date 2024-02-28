@@ -22,12 +22,26 @@ export class LambdaConstruct extends Construct {
     this.createSession = this.defaultFunction('CreateSession', './handlers/session/create-session.ts');
     this.getSession = this.defaultFunction('GetSession', './handlers/session/get-session.ts');
     this.updateSession = this.defaultFunction('UpdateSession', './handlers/session/update-session.ts');
-    this.generateSessionRecs = this.defaultFunction('GenerateSessionRecs', './handlers/session/generate-session-recs.ts');
+
+    if (!process.env.GOOG_API_KEY) {
+      throw new Error('Google Places API Key environment variable is not set');
+    }
+
+    this.generateSessionRecs = new NodejsFunction(this, 'GenerateSessionRecs', {
+      functionName: 'GenerateSessionRecs',
+      entry: './handlers/session/generate-session-recs.ts',
+      memorySize: 256,
+      runtime: Runtime.NODEJS_20_X,
+      timeout: Duration.seconds(15),
+      depsLockFilePath: './package-lock.json',
+      environment: { GOOGLE_PLACES_API_KEY: process.env.GOOG_API_KEY},
+    });
   }
 
   private defaultFunction = (
     funcName: string,
     handlerPath: string,
+    environment?: Record<string, string>
   ): IFunction => {
     return new NodejsFunction(this, funcName, {
       functionName: funcName,
@@ -36,6 +50,7 @@ export class LambdaConstruct extends Construct {
       runtime: Runtime.NODEJS_20_X,
       timeout: Duration.seconds(15),
       depsLockFilePath: './package-lock.json',
+      environment,
     });
   }
 }

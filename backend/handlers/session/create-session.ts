@@ -6,7 +6,8 @@ import { SESSIONS_TABLE_NAME } from '../../data/constants';
 const ddbClient = new DynamoDBClient({ region: 'us-west-2' });
 export const handler: Handler = async (event, context) => {
   const body = JSON.parse(event.body);
-  const { username } = body;
+  const { username, numPeople, date, time, location } = body;
+  // TODO: validate that user exists
 
   const sessionId = `${Date.now()}_${v4()}`;
 
@@ -16,13 +17,20 @@ export const handler: Handler = async (event, context) => {
       Item: {
         sessionId: { S: sessionId },
         sessionHostUsername: { S: username },
+        location: { S: location },
+        date: { S: date || "" },
+        time: { S: time || ""},
+        numPeople: { N: numPeople || "0"},
       },
-      ReturnValues: 'ALL_NEW' as const,
     };
+
     const result = (await ddbClient.send(new PutItemCommand(params))).Attributes;
     return {
       statusCode: 200,
-      body: JSON.stringify(result),
+      body: JSON.stringify({
+        sessionId,
+        sessionHostUsername: username,
+      }),
       headers: {
         'Access-Control-Allow-Origin': '*',
       },

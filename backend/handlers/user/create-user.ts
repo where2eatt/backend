@@ -16,12 +16,15 @@ export const handler: Handler = async (event, context) => {
         preferences: { S: JSON.stringify(preferences) },
       },
       ConditionExpression: 'attribute_not_exists(username)',
-      ReturnValues: 'ALL_NEW' as const,
     };
-    const result = await ddbClient.send(new PutItemCommand(params));;
+    const result = await ddbClient.send(new PutItemCommand(params));
     return {
       statusCode: 200,
-      body: JSON.stringify(result),
+      body: JSON.stringify({
+        username,
+        bio,
+        preferences,
+      }),
       headers: {
         'Access-Control-Allow-Origin': '*',
       },
