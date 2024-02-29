@@ -42,7 +42,7 @@ struct Login: View {
                         .padding()
                     
                     Button("LOG IN") {
-                        guard let url = URL(string: "https://to26ih53c4.execute-api.us-west-2.amazonaws.com/prod/user?username=\(username)") else { return }
+                        guard let url = URL(string: "https://077vfaggvg.execute-api.us-west-2.amazonaws.com/prod/user?username=\(username)") else { return }
                         URLSession.shared.dataTask(with: url) { (data, response, error) in
                             if let error = error {
                                 print("Error: \(error.localizedDescription)")
@@ -73,7 +73,7 @@ struct Login: View {
         //    .navigationTitle("Login")
             
             .fullScreenCover(isPresented: $navigateToHome) {
-                ContentView()
+                Home()
             }
         }
     }

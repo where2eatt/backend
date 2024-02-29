@@ -50,7 +50,7 @@ struct Signup: View {
                     
                     
                     Button("SIGN UP") {
-                        guard let url = URL(string: "https://to26ih53c4.execute-api.us-west-2.amazonaws.com/prod/user") else { return }
+                        guard let url = URL(string: "https://077vfaggvg.execute-api.us-west-2.amazonaws.com/prod/user") else { return }
 
                         var request = URLRequest(url: url)
                         request.httpMethod = "POST"
