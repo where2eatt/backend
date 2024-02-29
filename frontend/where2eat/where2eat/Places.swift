@@ -17,7 +17,7 @@ struct Places: View {
             
             VStack (alignment: .center, spacing: 20.0) {
                 
-                Text("PLACES TO GO")
+                Text("LOCATION RECOMMENDATIONS")
                     .font(.title)
                     .font(.custom("Roboto", size: 26))
                     .fontWeight(.bold)

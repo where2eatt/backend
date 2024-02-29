@@ -144,10 +144,17 @@ struct CreateNewSession: View {
                         .border(Color.gray, width: 1)
                         .padding()
                 }
-                
-                Button("SHARE SESSION LINK") {
+                Button("NEXT") {
                     isCalendarViewPresented = true
                 }
+                    .font(.title2)
+                    .buttonStyle(.borderedProminent)
+                    .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
+                
+                .sheet(isPresented: $isCalendarViewPresented) {
+                    Calendar()
+                }
+                
             }
         }
         .sheet(isPresented: $isCalendarViewPresented) {

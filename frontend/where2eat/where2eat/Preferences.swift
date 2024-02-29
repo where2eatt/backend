@@ -16,7 +16,10 @@ struct Preferences: View {
     @State private var accessibility = ""
     @State var choiceMade = "Select Cuisine"
     
-    @State var selectedButton = Set<UUID>()
+//    @State var selectedButton = Set<UUID>()
+    var items: [String] = [
+        
+    ]
     
     @State private var selectedOption = 0
     let dietoptions = ["None", "Vegetarian", "Vegan"]
