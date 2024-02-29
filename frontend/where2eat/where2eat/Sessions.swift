@@ -9,6 +9,7 @@ import SwiftUI
 import UIKit
 
 struct Sessions: View {
+    @State private var navigateToASession = false
 
     var body: some View {
         ZStack {
@@ -41,6 +42,18 @@ struct Sessions: View {
                 .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
                 
                 Spacer()
+                
+                Button("DINNER WITH CSE 403 GROUP") {
+                }
+                    .font(.title2)
+                    .buttonStyle(.borderedProminent)
+                    .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
+                    .frame(width: 250, height: 50)
+                
+                .fullScreenCover(isPresented: $navigateToASession) {
+                    ASession()
+                }
+            
                 
 //                Rectangle()
 //                    .fill(Color(red: 0.9607843137254902, green: 0.9607843137254902, blue: 0.9607843137254902))

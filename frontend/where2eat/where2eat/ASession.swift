@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 
 struct ASession: View {
-    @State private var isCalendarViewPresented = false
+    @State private var navigateToChatroom = false
 
     var body: some View {
         ZStack {
@@ -96,7 +96,14 @@ struct ASession: View {
                 }
                 
                 Button("GO TO GROUP CHAT") {
-                    isCalendarViewPresented = true
+                }
+                    .font(.title2)
+                    .buttonStyle(.borderedProminent)
+                    .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
+                    .frame(width: 250, height: 50)
+                
+                .fullScreenCover(isPresented: $navigateToChatroom) {
+                    Chatroom()
                 }
             }
         }

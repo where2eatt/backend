@@ -18,9 +18,7 @@ struct Preferences: View {
     
     @State private var selectedOption = 0
     let dietoptions = ["Vegetarian", "Vegan"]
-    
-    let locationoptions = ["UW", "Capitol Hill"]
-    
+        
     @State private var selectedPrice = 0
     let pricerange = ["$10", "$20", "$30", "$40", "$50", "$60"]
     
