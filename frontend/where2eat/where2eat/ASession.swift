@@ -8,11 +8,7 @@
 import SwiftUI
 import UIKit
 
-struct CreateNewSession: View {
-    @State private var num = ""
-    @State private var date = ""
-    @State private var time = ""
-    @State private var event = ""
+struct ASession: View {
     @State private var isCalendarViewPresented = false
 
     var body: some View {
@@ -21,7 +17,7 @@ struct CreateNewSession: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack (alignment: .center) {
-                Text("CREATE A NEW SESSION")
+                Text("DINNER WITH 403 GROUP")
                     .font(.title)
                     .font(.custom("Roboto", size: 26))
                     .fontWeight(.bold)
@@ -30,84 +26,87 @@ struct CreateNewSession: View {
                     .fixedSize(horizontal: false, vertical: true)
                 
                 HStack {
-                    Text("ATTENDEE #")
+                    Text("ATTENDEE #:")
                         .font(.title)
                         .font(.custom("Roboto", size: 10))
                         .fontWeight(.semibold)
                         .padding(20.0)
-                        .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                     
-                    TextField("Enter Number of Attendees", text: $num)
-                        .multilineTextAlignment(.center)
-                        .font(.subheadline)
-                        .border(Color.gray, width: 1)
-                        .padding()
-                }
-                
-                HStack {
-                    Text("DATE RANGE")
+                    Text("5")
                         .font(.title)
                         .font(.custom("Roboto", size: 10))
                         .fontWeight(.semibold)
                         .padding(20.0)
-                        .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                     
-                    TextField("Enter Date Range", text: $date)
-                        .multilineTextAlignment(.center)
-                        .font(.subheadline)
-                        .border(Color.gray, width: 1)
-                        .padding()
-                }
-                
-                HStack {
-                    Text("TIME RANGE")
-                        .font(.title)
-                        .font(.custom("Roboto", size: 10))
-                        .fontWeight(.semibold)
-                        .padding(20.0)
-                        .multilineTextAlignment(.center)
-                        .fixedSize(horizontal: false, vertical: true)
-                    
-                    TextField("Enter Time Range", text: $time)
-                        .multilineTextAlignment(.center)
-                        .font(.subheadline)
-                        .border(Color.gray, width: 1)
-                        .padding()
                     
                 }
                 
                 HStack {
-                    Text("EVENT TYPE")
+                    Text("DATE:")
                         .font(.title)
                         .font(.custom("Roboto", size: 10))
                         .fontWeight(.semibold)
                         .padding(20.0)
-                        .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                     
-                    TextField("Enter Event Type", text: $event)
-                        .multilineTextAlignment(.center)
-                        .font(.subheadline)
-                        .border(Color.gray, width: 1)
-                        .padding()
+                    Text("FEB 29TH, 2024")
+                        .font(.title)
+                        .font(.custom("Roboto", size: 10))
+                        .fontWeight(.semibold)
+                        .padding(20.0)
+                        .fixedSize(horizontal: false, vertical: true)
+                
                 }
                 
-                Button("SHARE SESSION LINK") {
+                HStack {
+                    Text("TIME RANGE:")
+                        .font(.title)
+                        .font(.custom("Roboto", size: 10))
+                        .fontWeight(.semibold)
+                        .padding(20.0)
+                        .fixedSize(horizontal: false, vertical: true)
+                    
+                    Text("6:30 PM - 7:30 PM")
+                        .font(.title)
+                        .font(.custom("Roboto", size: 10))
+                        .fontWeight(.semibold)
+                        .padding(20.0)
+                        .fixedSize(horizontal: false, vertical: true)
+                    
+                    
+                }
+                
+                HStack {
+                    Text("LOCATION:")
+                        .font(.title)
+                        .font(.custom("Roboto", size: 10))
+                        .fontWeight(.semibold)
+                        .padding(20.0)
+                        .fixedSize(horizontal: false, vertical: true)
+                    
+                    Text("ARAYA'S PLACE")
+                        .font(.title)
+                        .font(.custom("Roboto", size: 10))
+                        .fontWeight(.semibold)
+                        .padding(20.0)
+                        .fixedSize(horizontal: false, vertical: true)
+                    
+                }
+                
+                Button("GO TO GROUP CHAT") {
                     isCalendarViewPresented = true
                 }
             }
         }
-        .sheet(isPresented: $isCalendarViewPresented) {
-            Calendar()
-        }
     }
 }
 
-struct CreateNewSession_Previews: PreviewProvider {
+struct ASession_Previews: PreviewProvider {
     static var previews: some View {
-        CreateNewSession()
+        ASession()
     }
 }
+
 

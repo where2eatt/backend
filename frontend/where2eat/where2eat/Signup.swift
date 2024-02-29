@@ -80,7 +80,7 @@ struct Signup: View {
                         .frame(width: 250, height: 50)
                     
                     .fullScreenCover(isPresented: $navigateToHome) {
-                        Home()
+                        ContentView()
                     }
 //                Button("SIGN UP WITH GOOGLE") {
 //                    
