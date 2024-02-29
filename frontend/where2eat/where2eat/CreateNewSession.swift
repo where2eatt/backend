@@ -15,6 +15,57 @@ struct CreateNewSession: View {
     @State private var event = ""
     @State private var isCalendarViewPresented = false
 
+        
+        // Function to handle the session creation
+        func createSession() {
+            // Define the URL for the POST request
+            
+            guard let url = URL(string: "https://077vfaggvg.execute-api.us-west-2.amazonaws.com/prod/session") else {
+                print("Invalid URL")
+                return
+            }
+            
+            // Create the request body
+            let body: [String: String] = [
+                "username": "user1",
+                "location": "seattle"
+            ]
+            
+            // Convert the body to JSON data
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: body) else {
+                print("Failed to serialize JSON data")
+                return
+            }
+            
+            // Create the request
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.httpBody = jsonData
+            
+            // Send the request
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                // Handle the response
+                if let data = data {
+                    // Parse the response JSON
+                    if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String] {
+                        // Update UI based on the response
+                        DispatchQueue.main.async {
+                            if let sessionId = json["sessionId"], let sessionHostUsername = json["sessionHostUsername"] {
+                                print("Session ID: \(sessionId)")
+                                print("Session Host Username: \(sessionHostUsername)")
+                            } else {
+                                print("Invalid response format")
+                            }
+                        }
+                    } else {
+                        print("Invalid JSON response")
+                    }
+                } else {
+                    print("No data received")
+                }
+            }.resume()
+        }
+    
     var body: some View {
         ZStack {
             Color(red: 1, green: 1, blue: 0.9254901960784314)

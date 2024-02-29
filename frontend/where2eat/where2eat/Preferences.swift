@@ -14,9 +14,12 @@ struct Preferences: View {
     @State private var price = ""
     @State private var location = ""
     @State private var accessibility = ""
+    @State var choiceMade = "Select Cuisine"
     
     @State private var selectedOption = 0
-    let dietoptions = ["Vegetarian", "Vegan", "Halal"]
+    let dietoptions = ["Vegetarian", "Vegan"]
+    
+    let locationoptions = ["UW", "Capitol Hill"]
     
     @State private var selectedPrice = 0
     let pricerange = ["$10", "$20", "$30", "$40", "$50", "$60"]
@@ -40,7 +43,8 @@ struct Preferences: View {
                     .padding(40)
                 
                 HStack {
-                    Text("CUISINE & PALETTE ADVENTURENESS")
+                    //                    Text("CUISINE & PALETTE ADVENTURENESS")
+                    Text("CUISINE")
                         .font(.subheadline)
                         .font(.custom("Roboto", size: 10))
                         .fontWeight(.semibold)
@@ -48,11 +52,173 @@ struct Preferences: View {
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                     
-                    TextField("Search for cuisine", text: $cuisine)
-                        .multilineTextAlignment(.center)
-                        .font(.subheadline)
-                        .border(Color.gray, width: 1)
-                        .padding()
+
+                    Menu{
+                        Button(action: {
+                            choiceMade = "Brazilian"
+                        }, label: {
+                            Text("Brazilian")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Chinese"
+                        }, label: {
+                            Text("Chinese")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "French"
+                        }, label: {
+                            Text("French")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Greek"
+                        }, label: {
+                            Text("Greek")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Indian"
+                        }, label: {
+                            Text("Indian")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Indonesian"
+                        }, label: {
+                            Text("Indonesian")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Japanese"
+                        }, label: {
+                            Text("Japanese")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Korean"
+                        }, label: {
+                            Text("Korean")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Lebanese"
+                        }, label: {
+                            Text("Lebanese")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Mediterrranean"
+                        }, label: {
+                            Text("Mediterrranean")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Mexican"
+                        }, label: {
+                            Text("Mexican")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Middle Eastern"
+                        }, label: {
+                            Text("Middle Eastern")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Thai"
+                        }, label: {
+                            Text("Thai")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Turkish"
+                        }, label: {
+                            Text("Turkish")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Vietnamese"
+                        }, label: {
+                            Text("Vietnamese")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Bar"
+                        }, label: {
+                            Text("Bar")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Barbecue"
+                        }, label: {
+                            Text("Barbecue")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Coffee"
+                        }, label: {
+                            Text("Coffee")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Hamburger"
+                        }, label: {
+                            Text("Hamburger")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Ice Cream"
+                        }, label: {
+                            Text("Ice Cream")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Pizza"
+                        }, label: {
+                            Text("Pizza")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Ramen"
+                        }, label: {
+                            Text("Ramen")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Sandwich"
+                        }, label: {
+                            Text("Sandwich")
+                        })
+                        
+                        Button(action: {
+                            choiceMade = "Seafood"
+                        }, label: {
+                            Text("Seafoof")
+                        })
+                        
+                        
+                        Button(action: {
+                            choiceMade = "Steak"
+                        }, label: {
+                            Text("Steak")
+                        })
+                        
+                        
+                        Button(action: {
+                            choiceMade = "Sushi"
+                        }, label: {
+                            Text("Sushi")
+                        })
+                        
+                        
+                    } label: {
+                        Label(
+                            title: {Text("\(choiceMade)") },
+                            icon: {Image(systemName: "plus")}
+                        )
+                    }
                 }
                 
                 
@@ -66,8 +232,6 @@ struct Preferences: View {
                         .fixedSize(horizontal: false, vertical: true)
                     
                     VStack {
-                        //                           Text("Select a Dietary/Allergen")
-                        
                         Picker("Options", selection: $selectedOption) {
                             ForEach(0..<dietoptions.count) { index in
                                 Text(dietoptions[index]).tag(dietoptions[index])
@@ -130,12 +294,13 @@ struct Preferences: View {
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                     
-                    TextField("Search for cuisine", text: $location)
+                    TextField("Search for location", text: $location)
                         .multilineTextAlignment(.center)
                         .font(.subheadline)
                         .border(Color.gray, width: 1)
                         .padding()
                 }
+            
                 
                 HStack {
                     Text("ACCESSIBILITY")
