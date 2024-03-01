@@ -24,6 +24,7 @@
 		DB3375A82B79ECE200B110F6 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3375A72B79ECE200B110F6 /* Signup.swift */; };
 		DBE2D1F52B7CD9D100F68C3D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE2D1F42B7CD9D100F68C3D /* Storyboard.storyboard */; };
 		DBF5FFF52B907F9800BA13F8 /* ASession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF5FFF42B907F9800BA13F8 /* ASession.swift */; };
+		DBF5FFF72B91349F00BA13F8 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF5FFF62B91349F00BA13F8 /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		DB3375A72B79ECE200B110F6 /* Signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
 		DBE2D1F42B7CD9D100F68C3D /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		DBF5FFF42B907F9800BA13F8 /* ASession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASession.swift; sourceTree = "<group>"; };
+		DBF5FFF62B91349F00BA13F8 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Home.swift; path = where2eat/Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		7A4893DE2B69A55500A559E6 = {
 			isa = PBXGroup;
 			children = (
+				DBF5FFF62B91349F00BA13F8 /* Home.swift */,
 				7A4893E92B69A55500A559E6 /* where2eat */,
 				7A4893FA2B69A55600A559E6 /* where2eatTests */,
 				7A4894042B69A55600A559E6 /* where2eatUITests */,
@@ -298,6 +301,7 @@
 				DB3375A62B79ECD400B110F6 /* Login.swift in Sources */,
 				DBF5FFF52B907F9800BA13F8 /* ASession.swift in Sources */,
 				DB3375A42B79ECC200B110F6 /* ContentView.swift in Sources */,
+				DBF5FFF72B91349F00BA13F8 /* Home.swift in Sources */,
 				DB33759E2B79A2CE00B110F6 /* Places.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

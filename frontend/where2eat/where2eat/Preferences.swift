@@ -16,14 +16,22 @@ struct Preferences: View {
     @State private var accessibility = ""
     @State var choiceMade = "Select Cuisine"
     
+//    @State var selectedButton = Set<UUID>()
+    var items: [String] = [
+        
+    ]
+    
     @State private var selectedOption = 0
-    let dietoptions = ["Vegetarian", "Vegan"]
+    let dietoptions = ["None", "Vegetarian", "Vegan"]
         
     @State private var selectedPrice = 0
     let pricerange = ["$10", "$20", "$30", "$40", "$50", "$60"]
     
     @State private var selectedPriceTwo = 0
     let pricerangetwo = ["$10", "$20", "$30", "$40", "$50", "$60"]
+    
+    @State private var selectedDistance = 0
+    let distancerange = ["15 min", " 30 min", "1 hour"]
 
     @State private var isPlacesViewPresented = false
     
@@ -49,7 +57,8 @@ struct Preferences: View {
                         .padding(20.0)
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
-                    
+//                    List(selecton: $selectedButton)
+//                        ForEach
 
                     Menu{
                         Button(action: {
@@ -233,12 +242,10 @@ struct Preferences: View {
                         Picker("Options", selection: $selectedOption) {
                             ForEach(0..<dietoptions.count) { index in
                                 Text(dietoptions[index]).tag(dietoptions[index])
-                                
                             }
                         }
                         .pickerStyle(SegmentedPickerStyle())
                         
-                        Text("Selected Option: \(dietoptions[selectedOption])")
                     }
                     .padding()
                 }
@@ -284,7 +291,7 @@ struct Preferences: View {
                 } 
                 
                 HStack {
-                    Text("LOCATION")
+                    Text("DISTANCE")
                         .font(.subheadline)
                         .font(.custom("Roboto", size: 10))
                         .fontWeight(.semibold)
@@ -292,29 +299,19 @@ struct Preferences: View {
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                     
-                    TextField("Search for location", text: $location)
-                        .multilineTextAlignment(.center)
-                        .font(.subheadline)
-                        .border(Color.gray, width: 1)
-                        .padding()
-                }
-            
-                
-                HStack {
-                    Text("ACCESSIBILITY")
-                        .font(.subheadline)
-                        .font(.custom("Roboto", size: 10))
-                        .fontWeight(.semibold)
-                        .padding(20.0)
-                        .multilineTextAlignment(.center)
-                        .fixedSize(horizontal: false, vertical: true)
+                    VStack {
+                        Picker("DistanceOptions", selection: $selectedDistance) {
+                            ForEach(0..<distancerange.count) { index in
+                                Text(distancerange[index]).tag(distancerange[index])
+                            }
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                        
+                    }
+                    .padding()
                     
-                    TextField("Search for Accessibility", text: $accessibility)
-                        .multilineTextAlignment(.center)
-                        .font(.subheadline)
-                        .border(Color.gray, width: 1)
-                        .padding()
                 }
+
                 
                 Button("NEXT") {
                   guard let url = URL(string: "https://077vfaggvg.execute-api.us-west-2.amazonaws.com/prod/session") else { return }
