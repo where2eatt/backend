@@ -1,41 +1,70 @@
-//
-//  Places.swift
-//  where2eat
-//
-//  Created by stlp on 2/11/24.
-//
-
-import SwiftUI
-import UIKit
-
 struct Places: View {
-
+    @State private var displayNames: [String] = []
+    
     var body: some View {
         ZStack {
             Color(red: 1, green: 1, blue: 0.9254901960784314)
-                . edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                .edgesIgnoringSafeArea(.all)
             
             VStack (alignment: .center, spacing: 20.0) {
-                
                 Text("PLACES TO GO")
                     .font(.title)
                     .font(.custom("Roboto", size: 26))
                     .fontWeight(.bold)
                     .padding(40)
                 
-                Image("places")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 300)
-                    .padding()
+                List(displayNames, id: \.self) { displayName in
+                    Text(displayName)
+                }
             }
+        }
+        .onAppear {
+            fetchData()
         }
     }
     
+    func fetchData() {
+        guard var urlComponents = URLComponents(string: "https://077vfaggvg.execute-api.us-west-2.amazonaws.com/prod/recommendation") else {
+            print("Invalid URL")
+            return
+        }
+        
+        urlComponents.queryItems = [
+            URLQueryItem(name: "sessionId", value: "1709079639620_9ac7b523-6185-4a9c-aa6d-7e19f490087e")
+        ]
+        
+        guard let url = urlComponents.url else {
+            print("Invalid URL")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+                return
+            }
+            
+            if let data = data {
+                if let jsonString = String(data: data, encoding: .utf8) {
+                    print("Response: \(jsonString)")
+                    if let placesResponse = try? JSONDecoder().decode(PlacesResponse.self, from: data) {
+                        displayNames = placesResponse.places.map { $0.displayName.text }
+                    }
+                }
+            }
+        }.resume()
+    }
 }
 
-struct Places_Previews: PreviewProvider {
-    static var previews: some View {
-        Places()
-    }
+struct PlacesResponse: Codable {
+    let places: [Place]
+}
+
+struct Place: Codable {
+    let displayName: DisplayName
+}
+
+struct DisplayName: Codable {
+    let text: String
+    let languageCode: String
 }

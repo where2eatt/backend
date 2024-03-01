@@ -317,6 +317,44 @@ struct Preferences: View {
                 }
                 
                 Button("NEXT") {
+                  guard let url = URL(string: "https://077vfaggvg.execute-api.us-west-2.amazonaws.com/prod/session") else { return }
+
+
+                    var request = URLRequest(url: url)
+                    request.httpMethod = "PATCH"
+                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+                    let payload: [String: Any] = [
+                        "username": "user1",
+                        "sessionId": "1709079639620_9ac7b523-6185-4a9c-aa6d-7e19f490087e",
+                        "preferences": [
+                            "cuisine": choiceMade
+                        ]
+                    ]
+
+                    do {
+                        let jsonData = try JSONSerialization.data(withJSONObject: payload, options: [])
+                        request.httpBody = jsonData
+                    } catch {
+                        print("Error creating JSON data: \(error)")
+                        return
+                    }
+
+                    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                        if let error = error {
+                            print("Error: \(error)")
+                            return
+                        }
+                        
+                        if let data = data {
+                        let response = String(data: data, encoding: .utf8)
+                            
+                            // Handle response data
+                        }
+                    }
+
+                    task.resume()
+                    
                     isPlacesViewPresented = true
                 }
                     .font(.title2)
