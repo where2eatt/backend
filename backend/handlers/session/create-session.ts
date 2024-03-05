@@ -9,7 +9,7 @@ export const handler: Handler = async (event, context) => {
   const { username, numPeople, date, time, location } = body;
   // TODO: validate that user exists
 
-  const sessionId = `${Date.now()}_${v4()}`;
+  const sessionId = `${username}-${new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }).replace(/\//g, '')}-${Math.random().toString(36).substring(2, 6)}`;
 
   try {
     const params = {

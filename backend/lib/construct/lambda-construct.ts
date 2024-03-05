@@ -33,7 +33,7 @@ export class LambdaConstruct extends Construct {
     this.getMessage = this.defaultFunction('GetMessage', './handlers/message/get-message.ts');
     this.updateMessage = this.defaultFunction('UpdateMessage', './handlers/message/update-message.ts');
 
-    this.createSessionMessages = this.defaultFunction('CreateSessionMessages', './handlers/session_messages/create-session-messagse.ts');
+    this.createSessionMessages = this.defaultFunction('CreateSessionMessages', './handlers/session_messages/create-session-messages.ts');
     this.getSessionMessages = this.defaultFunction('GetSessionMessages', './handlers/session_messages/get-session-messages.ts');
     this.updateSessionMessages = this.defaultFunction('UpdateSessionMessages', './handlers/session_messages/update-session-messages.ts');
 
