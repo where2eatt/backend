@@ -1,5 +1,7 @@
 export const USERS_TABLE_NAME = 'Users';
 export const SESSIONS_TABLE_NAME = 'Sessions';
+export const MESSAGES_TABLE_NAME = 'Messages';
+export const SESSIONS_MESSAGES_TABLE_NAME = 'SessionToMessages';
 
 export const RESTAURANT_TYPE_OPTIONS = new Set<string>([
   "american_restaurant",
