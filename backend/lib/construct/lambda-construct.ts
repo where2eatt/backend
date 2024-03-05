@@ -11,6 +11,12 @@ export class LambdaConstruct extends Construct {
   readonly getSession: IFunction;
   readonly updateSession: IFunction;
   readonly generateSessionRecs: IFunction;
+  readonly createMessage: IFunction;
+  readonly getMessage: IFunction;
+  readonly updateMessage: IFunction;
+  readonly createSessionMessages: IFunction;
+  readonly getSessionMessages: IFunction;
+  readonly updateSessionMessages: IFunction;
 
   constructor(scope: Construct, id: string) {
     super(scope, id);
@@ -22,6 +28,14 @@ export class LambdaConstruct extends Construct {
     this.createSession = this.defaultFunction('CreateSession', './handlers/session/create-session.ts');
     this.getSession = this.defaultFunction('GetSession', './handlers/session/get-session.ts');
     this.updateSession = this.defaultFunction('UpdateSession', './handlers/session/update-session.ts');
+
+    this.createMessage = this.defaultFunction('CreateMessage', './handlers/message/create-message.ts');
+    this.getMessage = this.defaultFunction('GetMessage', './handlers/message/get-message.ts');
+    this.updateMessage = this.defaultFunction('UpdateMessage', './handlers/message/update-message.ts');
+
+    this.createSessionMessages = this.defaultFunction('CreateSessionMessages', './handlers/session_messages/create-session-messagse.ts');
+    this.getSessionMessages = this.defaultFunction('GetSessionMessages', './handlers/session_messages/get-session-messages.ts');
+    this.updateSessionMessages = this.defaultFunction('UpdateSessionMessages', './handlers/session_messages/update-session-messages.ts');
 
     if (!process.env.GOOG_API_KEY) {
       throw new Error('Google Places API Key environment variable is not set');
