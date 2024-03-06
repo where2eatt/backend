@@ -27,25 +27,12 @@ struct Sessions: View {
                     .fontWeight(.bold)
                     .padding(40)
                 
-//                Spacer()
-                
-//                Button("Dinner with CSE 403 Group") {
-//                    
-//                }
-                
-//                Image("mysession") 
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fit)
-//                    .frame(width: 300)
-//                    .padding()
-                
                 .font(.title2)
                 .buttonStyle(.borderedProminent)
                 .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
                 
-//                Spacer()
                 
-                Button("past sessions") {
+                Button("PAST SESSIONS") {
                     isHistoryPage = true
                 }
                 
@@ -58,51 +45,16 @@ struct Sessions: View {
                 }
                 
                 Button("DINNER WITH CSE 403 GROUP") {
+                    navigateToASession = true
                 }
                     .font(.title2)
                     .buttonStyle(.borderedProminent)
                     .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
-                    .frame(width: 250, height: 50)
+                    .frame(width: 250, height: 70)
                 
-                .fullScreenCover(isPresented: $navigateToASession) {
-                    ASession()
-                }
-            
-            
-                
-//                Rectangle()
-//                    .fill(Color(red: 0.9607843137254902, green: 0.9607843137254902, blue: 0.9607843137254902))
-//                    .frame(height: 100)
-                
-//                    .overlay(
-//                        NavigationView {
-//                            HStack {
-//                                NavigationLink(destination: Sessions()) {
-//                                    Image("home")
-//                                        .resizable()
-//                                        .aspectRatio(contentMode: .fit)
-//                                        .frame(width: 100)
-//                                        .padding()
-//                                }
-//                                
-//                                NavigationLink(destination: CreateNewSession()) {
-//                                    Image("plus")
-//                                        .resizable()
-//                                        .aspectRatio(contentMode: .fit)
-//                                        .frame(width: 70)
-//                                        .padding()
-//                                }
-//                                
-//                                NavigationLink(destination: Chatroom()) {
-//                                    Image("chat")
-//                                        .resizable()
-//                                        .aspectRatio(contentMode: .fit)
-//                                        .frame(width: 90)
-//                                        .padding()
-//                                }
-//                            }
-//                        }
-//                    )
+                    .sheet(isPresented: $navigateToASession) {
+                        ASession()
+                    }
             }
         }
     }
