@@ -80,27 +80,8 @@ struct Signup: View {
                         .frame(width: 250, height: 50)
                     
                     .fullScreenCover(isPresented: $navigateToHome) {
-                        ContentView()
+                        Home()
                     }
-//                Button("SIGN UP WITH GOOGLE") {
-//                    
-//                }
-//                
-//                .font(.title2)
-//                .buttonStyle(.borderedProminent)
-//                .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
-//                .frame(width: 250, height: 100)
-                
-//                Button("SIGN UP WITH APPLE ACOUNT") {
-//                    
-//                }
-//                
-//                .font(.title2)
-//                .buttonStyle(.borderedProminent)
-//                .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
-//                .frame(width: 250, height: 100)
-
-
                 }
             }
         }

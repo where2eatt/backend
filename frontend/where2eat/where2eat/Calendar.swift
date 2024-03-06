@@ -27,25 +27,11 @@ struct Calendar: View {
             VStack (alignment: .center) {
                 
                 
-                Text("MY CALENDAR AVAILABILITY")
+                Text("MY AVAILABILITY")
                     .font(.title)
                     .font(.custom("Roboto", size: 26))
                     .fontWeight(.bold)
                     .padding(40)
-                
-                Image("calendar")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 350)
-//                    .padding()
-                
-                Text("January 8th")
-                    .font(.title)
-                    .font(.custom("Roboto", size: 10))
-                    .fontWeight(.semibold)
-                    .padding(10.0)
-                    .multilineTextAlignment(.center)
-                    .fixedSize(horizontal: false, vertical: true)
                 
                 HStack {
                     Text("FROM")
@@ -57,6 +43,7 @@ struct Calendar: View {
                         .fixedSize(horizontal: false, vertical: true)
                     
                     DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/, label: { })
+                        .padding(20.0)
                 }
                 
                 HStack {
@@ -69,9 +56,9 @@ struct Calendar: View {
                         .fixedSize(horizontal: false, vertical: true)
                     
                     DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/, label: { })
+                        .padding(20.0)
                 }
                
-                Spacer()
                 
                 Button("NEXT") {
                     isPreferencesViewPresented = true
