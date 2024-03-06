@@ -163,12 +163,11 @@ export class BackendStack extends Stack {
         api: apiGateway.api,
         name: 'create-message-model',
         schema: {
-          messageId: JsonSchemaType.STRING,
           sessionId: JsonSchemaType.STRING,
           username: JsonSchemaType.STRING,
           message: JsonSchemaType.STRING
         },
-        required: ['messageId', 'sessionId', 'username', 'message'],
+        required: ['sessionId', 'username', 'message'],
       })
     );
     message.addMethod(
@@ -222,7 +221,7 @@ export class BackendStack extends Stack {
           sessionId: JsonSchemaType.STRING,
           messageId: JsonSchemaType.STRING,
         },
-        required: ['session', 'messageId'],
+        required: ['sessionId', 'messageId'],
       })
     );
   }
