@@ -5,7 +5,7 @@ import { SESSIONS_MESSAGES_TABLE_NAME } from "../../data/constants";
 const ddbClient = new DynamoDBClient({ region: 'us-west-2' });
 export const handler: Handler = async (event, context) => {
   const body = JSON.parse(event.body);
-  const { sessionId, messageId} = body;
+  const { sessionId, username, timestamp, message} = body;
 
   try {
     const params = {
@@ -13,9 +13,9 @@ export const handler: Handler = async (event, context) => {
       Key: {
         sessionId: { S: sessionId },
       },
-      UpdateExpression: 'SET messageList = list_append(messageList, :messageId)',
+      UpdateExpression: 'SET messageList = list_append(messageList, :messageTuple)',
       ExpressionAttributeValues: {
-        ':messageId': [messageId],
+        ':messageTuple': {username, timestamp, message},
       },
       ReturnValues: 'ALL_NEW' as const,
       ConditionExpression: 'attribute_exists(sessionId)',

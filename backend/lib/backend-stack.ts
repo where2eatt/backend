@@ -219,9 +219,9 @@ export class BackendStack extends Stack {
         name: 'update-session-message-model',
         schema: {
           sessionId: JsonSchemaType.STRING,
-          messageId: JsonSchemaType.STRING,
+          messageTuple: JsonSchemaType.TUPLE,
         },
-        required: ['sessionId', 'messageId'],
+        required: ['sessionId', 'messageTuple'],
       })
     );
   }
