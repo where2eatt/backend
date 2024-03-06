@@ -143,19 +143,6 @@ export class BackendStack extends Stack {
       })
     );
 
-    /*sessionMessage.addMethod(
-      'POST',
-      new LambdaIntegration(lambda.createSessionMessages),
-      this.jsonBodyValidationOptions({
-        api: apiGateway.api,
-        name: 'create-session-message-model',
-        schema: {
-          sessionId: JsonSchemaType.STRING,
-          messageList: JsonSchemaType.ARRAY,
-        },
-        required: ['sessionId', 'messageList'],
-      })
-    ); */
     sessionMessage.addMethod(
       'GET',
       new LambdaIntegration(lambda.getSessionMessages),
@@ -172,10 +159,9 @@ export class BackendStack extends Stack {
         schema: {
           sessionId: JsonSchemaType.STRING,
           username: JsonSchemaType.STRING,
-          timestamp: JsonSchemaType.STRING,
           message: JsonSchemaType.STRING
         },
-        required: ['sessionId', 'username', 'timestamp', 'message'],
+        required: ['sessionId', 'username', 'message'],
       })
     );
   }
