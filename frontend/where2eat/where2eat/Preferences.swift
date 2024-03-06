@@ -15,6 +15,7 @@ struct Preferences: View {
     @State private var accessibility = ""
     @State var choiceMade = "Select Cuisine"
     @AppStorage("sessionId") var storedSessionId: String?
+    @AppStorage("username") var storedUsername: String?
     
     var items: [String] = [
         "bakery",
@@ -93,21 +94,19 @@ struct Preferences: View {
                         .fixedSize(horizontal: false, vertical: true)
 
                     Menu {
-                                ForEach(items, id: \.self) { item in
-                                    Button(action: {
-                                        self.choiceMade = item
-                                    }) {
-                                        Text(item.replacingOccurrences(of: "_", with: " ").capitalized)
-                                    }
-                                }
-                            } label: {
-                                Label(
-                                    title: { Text("\(choiceMade ?? "Select an item")") },
-                                    icon: { Image(systemName: "plus") }
-                                )
+                        ForEach(items, id: \.self) { item in
+                            Button(action: {
+                                self.choiceMade = item
+                            }) {
+                                Text(item.replacingOccurrences(of: "_", with: " ").capitalized)
                             }
+                        }
+                    } label: {
+                        Label(
+                            title: { Text("\(choiceMade.replacingOccurrences(of: "_", with: " ").capitalized ?? "Select an item")") },
+                            icon: { Image(systemName: "plus") }
+                        )}
                     }
-                    
                     
                     HStack {
                         Text("DIETARY")
@@ -194,42 +193,7 @@ struct Preferences: View {
                     
                     
                     Button("NEXT") {
-                        guard let url = URL(string: Constants.apiGatewayUrl + "/session") else { return }
-                        
-                        var request = URLRequest(url: url)
-                        request.httpMethod = "PATCH"
-                        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                        
-                        let payload: [String: Any] = [
-                            "username": "user1",
-                            "sessionId": storedSessionId ?? "",
-                            "preferences": [
-                                "cuisine": choiceMade
-                            ]
-                        ]
-                        
-                        do {
-                            let jsonData = try JSONSerialization.data(withJSONObject: payload, options: [])
-                            request.httpBody = jsonData
-                        } catch {
-                            print("Error creating JSON data: \(error)")
-                            return
-                        }
-                        
-                        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                            if let error = error {
-                                print("Error: \(error)")
-                                return
-                            }
-                            
-                            if let data = data {
-                                let response = String(data: data, encoding: .utf8)
-                                
-                                // Handle response data
-                            }
-                        }
-                        
-                        task.resume()
+                      updateSession(sessionId: storedSessionId ?? "", username: storedUsername ?? "", cuisine: choiceMade)
                         
                         isPlacesViewPresented = true
                     }

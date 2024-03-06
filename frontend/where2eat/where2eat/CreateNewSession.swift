@@ -15,6 +15,7 @@ struct CreateNewSession: View {
     @State private var event = ""
     @State private var isCalendarViewPresented = false
     @AppStorage("sessionId") var storedSessionId: String = ""
+    @AppStorage("username") var storedUsername: String?
 
     // Function to handle the session creation
     func createSession() {
@@ -113,7 +114,7 @@ struct CreateNewSession: View {
 
                     // Create the request body
                     let payload: [String: String] = [
-                        "username": "user1",
+                        "username": storedUsername ?? "",
                         "location": "seattle"
                     ]
 
