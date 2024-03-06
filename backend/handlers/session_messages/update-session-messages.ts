@@ -16,7 +16,7 @@ export const handler: Handler = async (event, context) => {
       UpdateExpression: 'SET messageList = list_append(messageList, :messages)',
       ExpressionAttributeValues: {
         ':messages': {
-          L: [{ S: username }, { N: Date.now() }, { S: message }],
+          L: [{ S: username }, { S: Date.now().toString() }, { S: message }],
         },
       },
       ReturnValues: 'ALL_NEW' as const,
