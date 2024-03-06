@@ -18,6 +18,8 @@ WHERE2Eat is an iOS app that will be used to help individuals, pairs, or groups 
 - File to generate link and create new session
 - File to create chatroom for group to communicate
 - File to create calender availabilities
+- File to check history of locations visited
+- 
 
 - # Repository Updates
   - Building/Running the System
