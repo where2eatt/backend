@@ -193,7 +193,7 @@ struct Preferences: View {
                     
                     
                     Button("NEXT") {
-                      updateSession(sessionId: storedSessionId ?? "", username: storedUsername ?? "", cuisine: choiceMade)
+                      updateSession(sessionId: storedSessionId ?? "", username: storedUsername ?? "", cuisine: choiceMade, dietaryOption: dietoptions[selectedOption])
                         
                         isPlacesViewPresented = true
                     }

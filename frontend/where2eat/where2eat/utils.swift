@@ -7,7 +7,7 @@
 
 import Foundation
 
-func updateSession(sessionId: String, username: String, cuisine: String) {
+func updateSession(sessionId: String, username: String, cuisine: String, dietaryOption: String) {
   guard let url = URL(string: Constants.apiGatewayUrl + "/session") else { return }
   
   var request = URLRequest(url: url)
@@ -18,7 +18,8 @@ func updateSession(sessionId: String, username: String, cuisine: String) {
     "username": username,
     "sessionId": sessionId,
     "preferences": [
-      "cuisine": cuisine
+      "cuisine": cuisine,
+      "dietaryRestrictions": dietaryOption
     ]
   ]
   
