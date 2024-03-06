@@ -12,12 +12,22 @@ WHERE2Eat is an iOS app that will be used to help individuals, pairs, or groups 
 - Find a restaurant that is at a location that is accessible and ideal for all in the group  
 
 # Repository Layout
+Frontend Folder
 - File to connect iCloud for Google account login
 - File to store user's profile and preferences
 - File to generate food location options
 - File to generate link and create new session
 - File to create chatroom for group to communicate
 - File to create calender availabilities
+- File to check history of locations visited
+- File to check the calendar for days of the current month
+
+ Backend Folder
+ - File for getting restaurant APIs
+ - File for getting user APIs
+ - File for messaging table
+ - Filr for generating restaurants to source as options 
+
 
 - # Repository Updates
   - Building/Running the System
@@ -29,6 +39,10 @@ WHERE2Eat is an iOS app that will be used to help individuals, pairs, or groups 
     - Run the simulator
     - Make sure the interactions work as expected (text boxes, buttons, navigation bar) lead to the expected output
     - Use the Accessibility Inspector on XCode by going to Developer Tools and then Accessibility Inspector to test the accesibility
+    - Adding new tests
+       -To add a new test, make sure to create a YAML workflow file in the .github/workflows
+       - Define triggers, jobs, and specify commands you want to have tested
+       - Push these changes and examine to review and debug
    
   - # Technical Processes
     - Version Control
@@ -43,4 +57,3 @@ WHERE2Eat is an iOS app that will be used to help individuals, pairs, or groups 
   - Can login and sign up to the app
   - Can view some template sessions
   - Can enter information to create a new session
-    
