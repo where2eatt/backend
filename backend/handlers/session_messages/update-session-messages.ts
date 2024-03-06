@@ -13,9 +13,12 @@ export const handler: Handler = async (event, context) => {
       Key: {
         sessionId: { S: sessionId },
       },
-      UpdateExpression: 'SET messageList = list_append(messageList, :messageTuple)',
+      UpdateExpression: 'SET messageList = list_append(messageList, :messages)',
       ExpressionAttributeValues: {
-        ':messageTuple': {username, timestamp, message},
+        // ':messageArr': [username, timestamp, message],
+        ':messages': {
+          L: [{ S: username }, { S: timestamp }, { S: message }],
+        },
       },
       ReturnValues: 'ALL_NEW' as const,
       ConditionExpression: 'attribute_exists(sessionId)',

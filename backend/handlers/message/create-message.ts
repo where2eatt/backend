@@ -5,19 +5,17 @@ import { MESSAGES_TABLE_NAME } from "../../data/constants";
 const ddbClient = new DynamoDBClient({ region: 'us-west-2' });
 export const handler: Handler = async (event, context) => {
   const body = JSON.parse(event.body);
-  const { messageId, sessionId, username, message} = body;
-  
+  const { sessionId, username, message} = body;
+
   try {
     const params = {
       TableName: MESSAGES_TABLE_NAME,
       Item: {
-        messageId: { S: messageId },
         sessionId: {S: sessionId},
         username: {S: username},
-        message: {S: message}
+        message: {S: message},
+        timestamp: {N: Date.now().toString()}
       },
-      ConditionExpression: 'attribute_not_exists(messageId)',
-      ReturnValues: 'ALL_NEW' as const,
     };
     const result = await ddbClient.send(new PutItemCommand(params));;
     return {

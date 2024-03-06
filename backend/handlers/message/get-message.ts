@@ -9,7 +9,7 @@ import { MESSAGES_TABLE_NAME } from "../../data/constants";
 const ddbClient = new DynamoDBClient({ region: 'us-west-2' });
 export const handler: Handler = async (event, context) => {
   const body = JSON.parse(event.body);
-  const { messageId} = body;
+  const { messageId } = body;
 
   try {
     const params: GetItemCommandInput = {

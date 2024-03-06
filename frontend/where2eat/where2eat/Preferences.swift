@@ -195,8 +195,7 @@ struct Preferences: View {
                     
                     
                     Button("NEXT") {
-                        guard let url = URL(string: "https://077vfaggvg.execute-api.us-west-2.amazonaws.com/prod/session") else { return }
-                        
+                        guard let url = URL(string: Constants.apiGatewayUrl + "/session") else { return }
                         
                         var request = URLRequest(url: url)
                         request.httpMethod = "PATCH"

@@ -20,7 +20,7 @@ struct CreateNewSession: View {
         func createSession() {
             // Define the URL for the POST request
             
-            guard let url = URL(string: "https://077vfaggvg.execute-api.us-west-2.amazonaws.com/prod/session") else {
+            guard let url = URL(string: Constants.apiGatewayUrl + "/session") else {
                 print("Invalid URL")
                 return
             }
