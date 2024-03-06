@@ -76,7 +76,7 @@ export class BackendStack extends Stack {
     const session = apiGateway.api.root.addResource('session');
     const recommendation = apiGateway.api.root.addResource('recommendation');
     const message = apiGateway.api.root.addResource('message');
-    const sessionMessage = apiGateway.api.root.addReouse('session-message');
+    const sessionMessage = apiGateway.api.root.addResource('session-message');
 
     user.addMethod(
       'POST',
