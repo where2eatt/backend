@@ -1,36 +1,63 @@
-//
-//  Chatroom.swift
-//  where2eat
-//
-//  Created by stlp on 2/11/24.
-//
-
 import SwiftUI
 import UIKit
 
-struct Chatroom: View {
-    @State private var chat = ""
-    
-    var body: some View {
-        ZStack {
-            Color(red: 1, green: 1, blue: 0.9254901960784314)
-                . edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            
-            VStack (alignment: .center) {
-                
-                Text("CHATROOM")
-                    .font(.title)
-                    .font(.custom("Roboto", size: 26))
-                    .fontWeight(.bold)
-                    .padding(40)
-                
-            Spacer()
+struct Message: Identifiable {
+    var id = UUID()
+    var text: String
+    var isUser: Bool // Indicates if the message is sent by the user
+}
 
-                TextField("Send a message", text: $chat)
-                    .multilineTextAlignment(.center)
-                    .font(.subheadline)
-                    .border(Color.gray, width: 1)
+struct Chatroom: View {
+    @State private var messages: [Message] = []
+    @State private var newMessageText = ""
+    
+
+    var body: some View {
+        
+        
+        VStack {
+            
+            List(messages) { message in
+                MessageView(message: message)
+            }
+            HStack {
+                TextField("Enter your message", text: $newMessageText)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                Button("Send") {
+                    sendMessage()
+                }
+            }.padding()
+        }
+    }
+
+    func sendMessage() {
+        if !newMessageText.isEmpty {
+            let message = Message(text: newMessageText, isUser: true)
+            messages.append(message)
+            newMessageText = ""
+        }
+    }
+}
+
+struct MessageView: View {
+    var message: Message
+
+    var body: some View {
+        HStack {
+            if message.isUser {
+                Spacer()
+                Text(message.text)
                     .padding()
+                    .background(Color.blue)
+                    .foregroundColor(Color(red: 1, green: 1, blue: 0))
+                    .cornerRadius(8)
+            } else {
+                Text(message.text)
+                    .padding()
+                    .background(Color.gray)
+                    .foregroundColor(Color(red: 1, green: 1, blue: 0))
+                    .cornerRadius(8)
+                Spacer()
             }
         }
     }
