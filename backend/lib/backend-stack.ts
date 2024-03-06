@@ -102,7 +102,7 @@ export class BackendStack extends Stack {
       })
     );
 
-    session.addMethod(
+    /*session.addMethod(
       'POST',
       new LambdaIntegration(lambda.createSession),
       this.jsonBodyValidationOptions({
@@ -113,7 +113,7 @@ export class BackendStack extends Stack {
         },
         required: ['username', 'location'],
       })
-    );
+    );*/
     session.addMethod(
       'GET',
       new LambdaIntegration(lambda.getSession),
@@ -143,7 +143,7 @@ export class BackendStack extends Stack {
       })
     );
 
-    sessionMessage.addMethod(
+    /*sessionMessage.addMethod(
       'POST',
       new LambdaIntegration(lambda.createSessionMessages),
       this.jsonBodyValidationOptions({
@@ -155,7 +155,7 @@ export class BackendStack extends Stack {
         },
         required: ['sessionId', 'messageList'],
       })
-    );
+    ); */
     sessionMessage.addMethod(
       'GET',
       new LambdaIntegration(lambda.getSessionMessages),

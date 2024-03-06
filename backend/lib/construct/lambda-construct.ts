@@ -11,7 +11,7 @@ export class LambdaConstruct extends Construct {
   readonly getSession: IFunction;
   readonly updateSession: IFunction;
   readonly generateSessionRecs: IFunction;
-  readonly createSessionMessages: IFunction;
+  //readonly createSessionMessages: IFunction;
   readonly getSessionMessages: IFunction;
   readonly updateSessionMessages: IFunction;
 
@@ -26,7 +26,7 @@ export class LambdaConstruct extends Construct {
     this.getSession = this.defaultFunction('GetSession', './handlers/session/get-session.ts');
     this.updateSession = this.defaultFunction('UpdateSession', './handlers/session/update-session.ts');
 
-    this.createSessionMessages = this.defaultFunction('CreateSessionMessages', './handlers/session_messages/create-session-messages.ts');
+    //this.createSessionMessages = this.defaultFunction('CreateSessionMessages', './handlers/session_messages/create-session-messages.ts');
     this.getSessionMessages = this.defaultFunction('GetSessionMessages', './handlers/session_messages/get-session-messages.ts');
     this.updateSessionMessages = this.defaultFunction('UpdateSessionMessages', './handlers/session_messages/update-session-messages.ts');
 

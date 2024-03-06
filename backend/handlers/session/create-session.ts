@@ -1,7 +1,8 @@
 import { Handler } from 'aws-lambda';
 import { v4 } from 'uuid';
 import { DynamoDBClient, PutItemCommand } from '@aws-sdk/client-dynamodb';
-import { SESSIONS_TABLE_NAME } from '../../data/constants';
+import { SESSIONS_TABLE_NAME,  SESSIONS_MESSAGES_TABLE_NAME } from '../../data/constants';
+import { } from "../../data/constants";
 
 const ddbClient = new DynamoDBClient({ region: 'us-west-2' });
 export const handler: Handler = async (event, context) => {
@@ -24,6 +25,26 @@ export const handler: Handler = async (event, context) => {
       },
     };
 
+    try {
+      const params = {
+        TableName: SESSIONS_MESSAGES_TABLE_NAME,
+        Item: {
+          sessionId: { S: sessionId },
+          messageList: { L: [] },
+        },
+        ConditionExpression: 'attribute_not_exists(sessionId)',
+      };
+      const result = await ddbClient.send(new PutItemCommand(params));
+    } catch (e) {
+      console.error(e);
+      return {
+        statusCode: 400,
+        body: '{}',
+        headers: {
+          'Access-Control-Allow-Origin, Failed to input into SessionMessage Table': '*',
+        },
+      };
+    }
     const result = (await ddbClient.send(new PutItemCommand(params))).Attributes;
     return {
       statusCode: 200,
@@ -44,5 +65,5 @@ export const handler: Handler = async (event, context) => {
         'Access-Control-Allow-Origin': '*',
       },
     };
-  }
+  } 
 };
