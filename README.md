@@ -39,6 +39,10 @@ Frontend Folder
     - Run the simulator
     - Make sure the interactions work as expected (text boxes, buttons, navigation bar) lead to the expected output
     - Use the Accessibility Inspector on XCode by going to Developer Tools and then Accessibility Inspector to test the accesibility
+    - Adding new tests
+       -To add a new test, make sure to create a YAML workflow file in the .github/workflows
+       - Define triggers, jobs, and specify commands you want to have tested
+       - Push these changes and examine to review and debug
    
   - # Technical Processes
     - Version Control
@@ -53,4 +57,3 @@ Frontend Folder
   - Can login and sign up to the app
   - Can view some template sessions
   - Can enter information to create a new session
-    
