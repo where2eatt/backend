@@ -12,6 +12,7 @@ WHERE2Eat is an iOS app that will be used to help individuals, pairs, or groups 
 - Find a restaurant that is at a location that is accessible and ideal for all in the group  
 
 # Repository Layout
+Frontend Folder
 - File to connect iCloud for Google account login
 - File to store user's profile and preferences
 - File to generate food location options
@@ -20,6 +21,13 @@ WHERE2Eat is an iOS app that will be used to help individuals, pairs, or groups 
 - File to create calender availabilities
 - File to check history of locations visited
 - File to check the calendar for days of the current month
+
+ Backend Folder
+ - File for getting restaurant APIs
+ - File for getting user APIs
+ - File for messaging table
+ - Filr for generating restaurants to source as options 
+
 
 - # Repository Updates
   - Building/Running the System
