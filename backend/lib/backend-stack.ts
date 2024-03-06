@@ -53,7 +53,7 @@ export class BackendStack extends Stack {
 
     sessionsTable.grantReadData(lambda.generateSessionRecs);
 
-    sessionMessagesTable.grantWriteData(lambda.createSessionMessages);
+    sessionMessagesTable.grantWriteData(lambda.createSession);
     sessionMessagesTable.grantReadData(lambda.getSessionMessages);
     sessionMessagesTable.grantWriteData(lambda.updateSessionMessages);
 
@@ -102,7 +102,7 @@ export class BackendStack extends Stack {
       })
     );
 
-    /*session.addMethod(
+    session.addMethod(
       'POST',
       new LambdaIntegration(lambda.createSession),
       this.jsonBodyValidationOptions({
@@ -113,7 +113,7 @@ export class BackendStack extends Stack {
         },
         required: ['username', 'location'],
       })
-    );*/
+    );
     session.addMethod(
       'GET',
       new LambdaIntegration(lambda.getSession),
