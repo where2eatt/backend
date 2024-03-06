@@ -53,7 +53,7 @@ export class BackendStack extends Stack {
 
     sessionsTable.grantReadData(lambda.generateSessionRecs);
 
-    sessionMessagesTable.grantWriteData(lambda.createSessionMessages);
+    sessionMessagesTable.grantWriteData(lambda.createSession);
     sessionMessagesTable.grantReadData(lambda.getSessionMessages);
     sessionMessagesTable.grantWriteData(lambda.updateSessionMessages);
 
