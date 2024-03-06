@@ -13,7 +13,7 @@ struct Login: View {
     @State private var password = ""
     @State private var showErrorAlert = false
     @State private var navigateToHome = false
-    @AppStorage("sessionId") var storedUsername: String = ""
+    @AppStorage("username") var storedUsername: String = ""
     
     var body: some View {
         NavigationView {

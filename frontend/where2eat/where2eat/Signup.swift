@@ -14,7 +14,7 @@ struct Signup: View {
     @State private var reenter = ""
     @State private var navigateToHome = false
     @State private var showErrorAlert = false
-    @AppStorage("sessionId") var storedUsername: String = ""
+    @AppStorage("username") var storedUsername: String = ""
 
     var body: some View {
         NavigationView {
@@ -25,29 +25,32 @@ struct Signup: View {
                 VStack (alignment: .center) {
                     
                     Text("SIGN UP")
-                        .font(.title)
-                        .font(.custom("Roboto", size: 26))
-                        .fontWeight(.bold)
-                        .padding(40)
+                      .font(.title)
+                      .font(.custom("Roboto", size: 26))
+                      .fontWeight(.bold)
+                      .padding(40)
                 
                     
                     TextField("Create Username", text: $username)
-                        .multilineTextAlignment(.center)
-                        .font(.title)
-                        .border(Color.gray, width: 1)
-                        .padding()
+                      .autocapitalization(.none)
+                      .multilineTextAlignment(.center)
+                      .font(.title)
+                      .border(Color.gray, width: 1)
+                      .padding()
                     
                     SecureField("Create Password", text: $password)
-                        .multilineTextAlignment(.center)
-                        .font(.title)
-                        .border(Color.gray, width: 1)
-                        .padding()
+                      .autocapitalization(.none)
+                      .multilineTextAlignment(.center)
+                      .font(.title)
+                      .border(Color.gray, width: 1)
+                      .padding()
                     
                     SecureField("Re-enter Password", text: $reenter)
-                        .multilineTextAlignment(.center)
-                        .font(.title)
-                        .border(Color.gray, width: 1)
-                        .padding()
+                      .autocapitalization(.none)
+                      .multilineTextAlignment(.center)
+                      .font(.title)
+                      .border(Color.gray, width: 1)
+                      .padding()
                     
                     
                     Button("SIGN UP") {
