@@ -4,7 +4,7 @@ import { LambdaConstruct } from './construct/lambda-construct';
 import { ApiGatewayConstruct } from './construct/apigateway-construct';
 import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 import { AuthorizationType, IAuthorizer, IRestApi, JsonSchema, JsonSchemaType, LambdaIntegration, MethodOptions, Model } from 'aws-cdk-lib/aws-apigateway';
-import { SESSIONS_TABLE_NAME, USERS_TABLE_NAME, MESSAGES_TABLE_NAME, SESSIONS_MESSAGES_TABLE_NAME} from '../data/constants';
+import { SESSIONS_TABLE_NAME, USERS_TABLE_NAME, SESSIONS_MESSAGES_TABLE_NAME} from '../data/constants';
 
 export class BackendStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -32,15 +32,6 @@ export class BackendStack extends Stack {
       removalPolicy: RemovalPolicy.DESTROY,
     });
 
-    const messagesTable = new dynamodb.Table(this, 'MessagesTable', {
-      tableName: MESSAGES_TABLE_NAME,
-      partitionKey: {
-        name: 'messageId',
-        type: dynamodb.AttributeType.STRING,
-      },
-      removalPolicy: RemovalPolicy.DESTROY,
-    });
-
     const sessionMessagesTable = new dynamodb.Table(this, 'SessionsMessagesTable', {
       tableName: SESSIONS_MESSAGES_TABLE_NAME,
       partitionKey: {
@@ -62,10 +53,6 @@ export class BackendStack extends Stack {
 
     sessionsTable.grantReadData(lambda.generateSessionRecs);
 
-    messagesTable.grantWriteData(lambda.createMessage);
-    messagesTable.grantReadData(lambda.getMessage);
-    messagesTable.grantWriteData(lambda.updateMessage);
-
     sessionMessagesTable.grantWriteData(lambda.createSessionMessages);
     sessionMessagesTable.grantReadData(lambda.getSessionMessages);
     sessionMessagesTable.grantWriteData(lambda.updateSessionMessages);
@@ -75,7 +62,7 @@ export class BackendStack extends Stack {
     const user = apiGateway.api.root.addResource('user');
     const session = apiGateway.api.root.addResource('session');
     const recommendation = apiGateway.api.root.addResource('recommendation');
-    const message = apiGateway.api.root.addResource('message');
+
     const sessionMessage = apiGateway.api.root.addResource('session-message');
 
     user.addMethod(
@@ -156,41 +143,6 @@ export class BackendStack extends Stack {
       })
     );
 
-    message.addMethod(
-      'POST',
-      new LambdaIntegration(lambda.createMessage),
-      this.jsonBodyValidationOptions({
-        api: apiGateway.api,
-        name: 'create-message-model',
-        schema: {
-          sessionId: JsonSchemaType.STRING,
-          username: JsonSchemaType.STRING,
-          message: JsonSchemaType.STRING
-        },
-        required: ['sessionId', 'username', 'message'],
-      })
-    );
-    message.addMethod(
-      'GET',
-      new LambdaIntegration(lambda.getMessage),
-      this.queryParamValidationOptions({
-        messageId: true,
-      })
-    );
-    message.addMethod(
-      'PATCH',
-      new LambdaIntegration(lambda.updateMessage),
-      this.jsonBodyValidationOptions({
-        api: apiGateway.api,
-        name: 'update-message-model',
-        schema: {
-          messageId: JsonSchemaType.STRING,
-          message: JsonSchemaType.STRING
-        },
-        required: ['messageId', 'message'],
-      })
-    );
-
     sessionMessage.addMethod(
       'POST',
       new LambdaIntegration(lambda.createSessionMessages),
@@ -206,7 +158,7 @@ export class BackendStack extends Stack {
     );
     sessionMessage.addMethod(
       'GET',
-      new LambdaIntegration(lambda.getMessage),
+      new LambdaIntegration(lambda.getSessionMessages),
       this.queryParamValidationOptions({
         messageId: true,
       })
