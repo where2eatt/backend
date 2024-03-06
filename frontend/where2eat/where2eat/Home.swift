@@ -10,8 +10,8 @@ struct Home: View {
             VStack (alignment: .center, spacing: 20.0) {
                 if selectedView == "Sessions" {
                     Sessions()
-                } else if selectedView == "CreateNewSession" {
-                    CreateNewSession()
+                } else if selectedView == "ChooseSession" {
+                    ChooseSession()
                 } else if selectedView == "Chatroom" {
                     Chatroom()
                 }
@@ -35,7 +35,7 @@ struct Home: View {
                                 Spacer()
                                 
                                 Button(action: {
-                                    selectedView = "CreateNewSession"
+                                    selectedView = "ChooseSession"
                                 }) {
                                     Image("plus")
                                         .resizable()
