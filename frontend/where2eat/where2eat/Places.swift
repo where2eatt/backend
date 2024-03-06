@@ -3,6 +3,7 @@ import UIKit
 
 struct Places: View {
     @State private var displayNames: [String] = []
+    @AppStorage("sessionId") var storedSessionId: String?
     
     var body: some View {
         ZStack {
@@ -28,13 +29,13 @@ struct Places: View {
     }
     
     func fetchData() {
-        guard var urlComponents = URLComponents(string: "https://077vfaggvg.execute-api.us-west-2.amazonaws.com/prod/recommendation") else {
+        guard var urlComponents = URLComponents(string: Constants.apiGatewayUrl + "/recommendation") else {
             print("Invalid URL")
             return
         }
         
         urlComponents.queryItems = [
-            URLQueryItem(name: "sessionId", value: "1709079639620_9ac7b523-6185-4a9c-aa6d-7e19f490087e")
+            URLQueryItem(name: "sessionId", value: storedSessionId ?? "")
         ]
         
         guard let url = urlComponents.url else {

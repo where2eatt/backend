@@ -14,8 +14,7 @@ struct Preferences: View {
     @State private var location = ""
     @State private var accessibility = ""
     @State var choiceMade = "Select Cuisine"
-    
-
+    @AppStorage("sessionId") var storedSessionId: String?
     
     var items: [String] = [
         "bakery",
@@ -203,7 +202,7 @@ struct Preferences: View {
                         
                         let payload: [String: Any] = [
                             "username": "user1",
-                            "sessionId": "1709079639620_9ac7b523-6185-4a9c-aa6d-7e19f490087e",
+                            "sessionId": storedSessionId ?? "",
                             "preferences": [
                                 "cuisine": choiceMade
                             ]
