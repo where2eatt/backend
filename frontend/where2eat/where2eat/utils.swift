@@ -46,7 +46,7 @@ func updateSession(sessionId: String, username: String, cuisine: String, dietary
   task.resume()
 }
 
-func updateMessage(sessionId: String, username: String, message: String) {
+func postMessage(sessionId: String, username: String, message: String) {
   guard let url = URL(string: Constants.apiGatewayUrl + "/sessionMessage") else { return }
   
   var request = URLRequest(url: url)
@@ -82,7 +82,7 @@ func updateMessage(sessionId: String, username: String, message: String) {
   task.resume()
 }
 
-func updateMessage(sessionId: String, currentChat: Array) {
+func updateChat(sessionId: String, currentChat: Array) {
   guard let url = URL(string: Constants.apiGatewayUrl + "/sessionMessage") else { return }
   
   var request = URLRequest(url: url)
