@@ -64,8 +64,8 @@ struct MessageView: View {
             } else {
                 Text(message.text)
                     .padding()
-                    .background(Color.gray)
-                    .foregroundColor(Color(red: 1, green: 1, blue: 0))
+                    .foregroundColor(Color.white)
+                    .background(Color(red: 0.34901960784313724, green: 0.49411764705882355, blue: 0.3215686274509804))
                     .cornerRadius(8)
                 Spacer()
             }
