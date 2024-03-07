@@ -147,7 +147,7 @@ export class BackendStack extends Stack {
       'GET',
       new LambdaIntegration(lambda.getSessionMessages),
       this.queryParamValidationOptions({
-        messageId: true,
+        sessionId: true,
       })
     );
     sessionMessage.addMethod(

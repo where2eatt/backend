@@ -4,19 +4,18 @@ import UIKit
 struct Message: Identifiable {
     var id = UUID()
     var text: String
-    var isUser: Bool // Indicates if the message is sent by the user
+    var isUser: Bool
+    var username: String
 }
 
 struct Chatroom: View {
     @State private var messages: [Message] = []
     @State private var newMessageText = ""
+    @AppStorage("sessionId") var storedSessionId: String?
+    @AppStorage("username") var storedUsername: String?
     
-
     var body: some View {
-        
-        
         VStack {
-            
             List(messages) { message in
                 MessageView(message: message)
             }
@@ -28,12 +27,19 @@ struct Chatroom: View {
                 }
             }.padding()
         }
+        .onAppear {
+            messages = getMessages(sessionId: storedSessionId ?? "")
+            Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
+                messages = getMessages(sessionId: storedSessionId ?? "")
+            }
+        }
     }
-
+    
     func sendMessage() {
         if !newMessageText.isEmpty {
-            let message = Message(text: newMessageText, isUser: true)
+            let message = Message(text: newMessageText, isUser: true, username: storedUsername ?? "")
             messages.append(message)
+            postMessage(sessionId: storedSessionId ?? "", username: storedUsername ?? "", message: newMessageText)
             newMessageText = ""
         }
     }
