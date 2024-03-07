@@ -13,6 +13,7 @@ struct Preferences: View {
     @State private var price = ""
     @State private var location = ""
     @State private var accessibility = ""
+
     @State var choiceMade = "Select Cuisine"
     @AppStorage("sessionId") var storedSessionId: String?
     @AppStorage("username") var storedUsername: String?
@@ -73,6 +74,7 @@ struct Preferences: View {
     
     var body: some View {
         ZStack {
+            
             Color(red: 1, green: 1, blue: 0.9254901960784314)
                 . edgesIgnoringSafeArea(.all)
             
@@ -194,7 +196,7 @@ struct Preferences: View {
                     
                     Button("NEXT") {
                       updateSession(sessionId: storedSessionId ?? "", username: storedUsername ?? "", cuisine: choiceMade, dietaryOption: dietoptions[selectedOption])
-                        
+
                         isPlacesViewPresented = true
                     }
                     .font(.title2)

@@ -4,6 +4,8 @@ import UIKit
 struct Places: View {
     @State private var displayNames: [String] = []
     @AppStorage("sessionId") var storedSessionId: String?
+    @State private var navigateToChatroom = false
+
     
     var body: some View {
         ZStack {
@@ -22,10 +24,22 @@ struct Places: View {
                     Text(displayName)
                 }
             }
+            
         }
         .onAppear {
             fetchData()
         }
+        Button("GO TO GROUP CHAT") {
+            navigateToChatroom = true
+        }
+        .font(.title2)
+        .buttonStyle(.borderedProminent)
+        .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
+        
+        .sheet(isPresented: $navigateToChatroom) {
+            Chatroom()
+        }
+
     }
     
     func fetchData() {
