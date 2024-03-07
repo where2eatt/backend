@@ -12,9 +12,8 @@ struct ChooseSession: View {
     @State private var isHistoryPage = false
     @State private var currentsession = false
     @State private var createsession = false
-
-
-
+    @State private var joinsession = false
+    @AppStorage("sessionId") var storedSessionId: String = ""
 
     var body: some View {
         ZStack {
@@ -38,7 +37,6 @@ struct ChooseSession: View {
                 Button("PAST SESSIONS") {
                     isHistoryPage = true
                 }
-                
                 .font(.title2)
                 .buttonStyle(.borderedProminent)
                 .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
@@ -50,14 +48,21 @@ struct ChooseSession: View {
                 Button("CURRENT SESSIONS") {
                     currentsession = true
                 }
+                .font(.title2)
+                .buttonStyle(.borderedProminent)
+                .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
+                .frame(width: 250, height: 50)
+
+                Button("JOIN SESSION") {
+                    joinsession = true
+                    storedSessionId = ""
+                }
                 
                 .font(.title2)
                 .buttonStyle(.borderedProminent)
                 .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
                 .frame(width: 250, height: 50)
-                .fullScreenCover(isPresented: $currentsession) {
-                    Home()
-                }
+                
                 
                 Button("CREATE A NEW SESSION") {
                     createsession = true
@@ -67,9 +72,15 @@ struct ChooseSession: View {
                     .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
                     .frame(width: 250, height: 70)
                 
-                    .sheet(isPresented: $createsession) {
-                        CreateNewSession()
-                    }
+                .sheet(isPresented: $createsession) {
+                    CreateNewSession()
+                }
+                .sheet(isPresented: $joinsession) {
+                    JoinSession()
+                }
+                .fullScreenCover(isPresented: $currentsession) {
+                    Home()
+                }
             }
         }
     }
