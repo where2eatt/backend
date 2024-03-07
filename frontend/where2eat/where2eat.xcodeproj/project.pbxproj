@@ -16,6 +16,7 @@
 		7A4894082B69A55600A559E6 /* where2eatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4894072B69A55600A559E6 /* where2eatUITestsLaunchTests.swift */; };
 		7AF806742B991097002D5DE4 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF806732B991097002D5DE4 /* constants.swift */; };
 		7AF806762B992DEF002D5DE4 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF806752B992DEF002D5DE4 /* utils.swift */; };
+		7AF806782B994FE8002D5DE4 /* JoinSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF806772B994FE8002D5DE4 /* JoinSession.swift */; };
 		DB3375982B79A06D00B110F6 /* CreateNewSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3375972B79A06D00B110F6 /* CreateNewSession.swift */; };
 		DB33759A2B79A27800B110F6 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3375992B79A27800B110F6 /* Calendar.swift */; };
 		DB33759C2B79A2A300B110F6 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB33759B2B79A2A300B110F6 /* Preferences.swift */; };
@@ -61,6 +62,7 @@
 		7A4894072B69A55600A559E6 /* where2eatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = where2eatUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7AF806732B991097002D5DE4 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		7AF806752B992DEF002D5DE4 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
+		7AF806772B994FE8002D5DE4 /* JoinSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinSession.swift; sourceTree = "<group>"; };
 		DB3375972B79A06D00B110F6 /* CreateNewSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewSession.swift; sourceTree = "<group>"; };
 		DB3375992B79A27800B110F6 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		DB33759B2B79A2A300B110F6 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				DBF5FFF42B907F9800BA13F8 /* ASession.swift */,
 				DB3375A72B79ECE200B110F6 /* Signup.swift */,
 				DB3375972B79A06D00B110F6 /* CreateNewSession.swift */,
+				7AF806772B994FE8002D5DE4 /* JoinSession.swift */,
 				DB4ADCCD2B99298900B68B2C /* ChooseSession.swift */,
 				DB3375992B79A27800B110F6 /* Calendar.swift */,
 				DB33759B2B79A2A300B110F6 /* Preferences.swift */,
@@ -304,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AF806762B992DEF002D5DE4 /* utils.swift in Sources */,
+				7AF806782B994FE8002D5DE4 /* JoinSession.swift in Sources */,
 				7A4893ED2B69A55500A559E6 /* Sessions.swift in Sources */,
 				DB3375A82B79ECE200B110F6 /* Signup.swift in Sources */,
 				7A4893EB2B69A55500A559E6 /* where2eatApp.swift in Sources */,
