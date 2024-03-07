@@ -5,6 +5,10 @@ struct Places: View {
     @State private var displayNames: [String] = []
     @State private var isLoading = true // Added isLoading state
     @AppStorage("sessionId") var storedSessionId: String?
+    @State private var navigateToChatroom = false
+    @State private var isGoingToSessions = false
+
+
     
     var body: some View {
         ZStack {
@@ -27,10 +31,35 @@ struct Places: View {
                     }
                 }
             }
+            
         }
         .onAppear {
             fetchData()
         }
+        Button("GO TO GROUP CHAT") {
+            navigateToChatroom = true
+        }
+        .font(.title2)
+        .buttonStyle(.borderedProminent)
+        .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
+        
+        .sheet(isPresented: $navigateToChatroom) {
+            Chatroom()
+        }
+        
+        Button("HOME") {
+            isGoingToSessions = true
+        }
+            .font(.title2)
+            .buttonStyle(.borderedProminent)
+            .tint(Color(red: 0.41568627450980394, green: 0.6509803921568628, blue: 0.3803921568627451))
+            .frame(width: 300, height: 100)
+
+        
+            .sheet(isPresented: $isGoingToSessions) {
+                Home()
+            }
+
     }
     
     func fetchData() {
