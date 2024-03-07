@@ -82,10 +82,11 @@ func postMessage(sessionId: String, username: String, message: String) {
   task.resume()
 }
 
-func getMessages(sessionId: String) -> [Message] {
+func getMessages(sessionId: String, username: String, completion: @escaping ([Message]) -> Void) {
   guard var urlComponents = URLComponents(string: Constants.apiGatewayUrl + "/session-message") else {
     print("Invalid URL")
-    return []
+    completion([])
+    return
   }
   
   urlComponents.queryItems = [
@@ -93,28 +94,38 @@ func getMessages(sessionId: String) -> [Message] {
   ]
   
   guard let url = urlComponents.url else {
-      print("Invalid URL")
-      return []
+    print("Invalid URL")
+    completion([])
+    return
   }
   
-  var messageList: [String] = []
+  var messageList: [Message] = []
   
   URLSession.shared.dataTask(with: url) { (data, response, error) in
       if let error = error {
           print("Error: \(error.localizedDescription)")
           return
       }
-      
-      if let data = data {
-          if let jsonString = String(data: data, encoding: .utf8) {
-            print("Response: \(jsonString)")
-            messageList = jsonString["messageList"]
-          }
-      }
-  }.resume()
-  
-  
-  
-  return messageList
-  
+    
+    if let data = data {
+        if let jsonString = String(data: data, encoding: .utf8) {
+            if let placesResponse = try? JSONDecoder().decode(GetMessagesResponse.self, from: data) {
+              print(placesResponse)
+              var allMessageList = placesResponse.messageList
+              print(allMessageList)
+
+              for i in stride(from: 0, to: allMessageList.count, by: 3) {
+                messageList.append(Message(text: allMessageList[i + 2], isUser: allMessageList[i] == username, username: allMessageList[i]))
+              }
+              print(messageList)
+              completion(messageList)
+            }
+        }
+    }
+  }.resume()  
+}
+
+struct GetMessagesResponse: Codable {
+  let sessionId: String
+  let messageList: [String]
 }

@@ -28,9 +28,13 @@ struct Chatroom: View {
             }.padding()
         }
         .onAppear {
-            messages = getMessages(sessionId: storedSessionId ?? "")
+            getMessages(sessionId: storedSessionId ?? "", username: storedUsername ?? "") { messageList in
+                messages = messageList
+            }
             Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
-                messages = getMessages(sessionId: storedSessionId ?? "")
+              getMessages(sessionId: storedSessionId ?? "", username: storedUsername ?? "") { messageList in
+                messages = messageList
+            }
             }
         }
     }
