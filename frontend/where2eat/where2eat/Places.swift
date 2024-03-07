@@ -3,6 +3,7 @@ import UIKit
 
 struct Places: View {
     @State private var displayNames: [String] = []
+    @State private var isLoading = true // Added isLoading state
     @AppStorage("sessionId") var storedSessionId: String?
     
     var body: some View {
@@ -18,8 +19,12 @@ struct Places: View {
                     .fontWeight(.bold)
                     .padding(40)
                 
-                List(displayNames, id: \.self) { displayName in
-                    Text(displayName)
+                if isLoading { // Show loading icon while isLoading is true
+                    ProgressView()
+                } else {
+                    List(displayNames, id: \.self) { displayName in
+                        Text(displayName)
+                    }
                 }
             }
         }
@@ -42,22 +47,24 @@ struct Places: View {
             print("Invalid URL")
             return
         }
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-                return
-            }
-            
-            if let data = data {
-                if let jsonString = String(data: data, encoding: .utf8) {
-                    print("Response: \(jsonString)")
-                    if let placesResponse = try? JSONDecoder().decode(PlacesResponse.self, from: data) {
-                        displayNames = placesResponse.places.map { $0.displayName.text }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                    return
+                }
+                
+                if let data = data {
+                    if let jsonString = String(data: data, encoding: .utf8) {
+                        print("Response: \(jsonString)")
+                        if let placesResponse = try? JSONDecoder().decode(PlacesResponse.self, from: data) {
+                            displayNames = placesResponse.places.map { $0.displayName.text }
+                            isLoading = false // Set isLoading to false after data is fetched
+                        }
                     }
                 }
-            }
-        }.resume()
+            }.resume()
+        }
     }
 }
 
