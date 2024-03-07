@@ -109,6 +109,6 @@ npx cdk deploy --profile [profile name created above]
        - Makes sure that every change complies with what is expected in terms of any change not breaking the code
     
 - # Working Use Cases
-  - Can login and sign up to the app
-  - Can view some template sessions
+  - Can view some past template sessions
   - Can enter information to create a new session
+  - Can utilize the chat room to talk to other users
