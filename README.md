@@ -111,4 +111,6 @@ npx cdk deploy --profile [profile name created above]
 - # Working Use Cases
   - Can view some past template sessions
   - Can enter information to create a new session
+  - Sharable session ID for users to join sessions
   - Can utilize the chat room to talk to other users
+  - Generate location recommendations based on user's preferences
